@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APRÈS — Brand Blueprint</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --jade: #00C9A7;
+            --jade-dark: #009B80;
+            --jade-glow: rgba(0, 201, 167, 0.15);
+            --amber: #D4944B;
+            --amber-dark: #B87A34;
+            --cobalt: #3A5FC8;
+            --smoke: #8A8A8A;
+            --black: #0A0A0A;
+            --black-soft: #141414;
+            --black-card: #1A1A1A;
+            --black-border: #2A2A2A;
+            --cream: #F5F0E8;
+            --cream-dim: rgba(245, 240, 232, 0.85);
+            --cream-muted: rgba(245, 240, 232, 0.5);
+            --cream-ghost: rgba(245, 240, 232, 0.15);
+            --tungsten: #FFD98C;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            background: var(--black);
+            color: var(--cream);
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--black);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50vw;
+            height: 50vw;
+            border-radius: 50%;
+            background: radial-gradient(ellipse, var(--jade-glow) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 10%;
+            right: 20%;
+            width: 30vw;
+            height: 30vw;
+            border-radius: 50%;
+            background: radial-gradient(ellipse, rgba(212, 148, 75, 0.08) 0%, transparent 70%);
+            animation: pulse 12s ease-in-out infinite reverse;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .hero-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--jade);
+            margin-bottom: 3rem;
+        }
+
+        .hero-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(4rem, 12vw, 10rem);
+            letter-spacing: 0.12em;
+            line-height: 0.9;
+            color: var(--cream);
+            margin-bottom: 2rem;
+        }
+
+        .hero-statement {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--cream-muted);
+            max-width: 480px;
+            margin: 0 auto 3.5rem;
+            line-height: 1.5;
+        }
+
+        .hero-meta {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--cream-muted);
+            line-height: 2.2;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .hero-scroll span {
+            display: block;
+            width: 1px;
+            height: 48px;
+            background: var(--jade);
+            margin: 0 auto;
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* ─── SECTIONS ─── */
+        section { padding: 8rem 2rem; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .container--wide { max-width: 1100px; margin: 0 auto; }
+
+        .phase-tag {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--jade);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            color: var(--cream);
+        }
+
+        .section-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: 1.2rem;
+            color: var(--cream-muted);
+            margin-bottom: 3rem;
+        }
+
+        .divider {
+            width: 40px;
+            height: 1px;
+            background: var(--jade);
+            margin: 0 0 2rem 0;
+        }
+
+        .body-text {
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: var(--cream-dim);
+            max-width: 720px;
+        }
+
+        .body-text em { color: var(--cream); font-style: italic; }
+        .body-text strong { color: var(--cream); }
+
+        /* ─── PROFILE ─── */
+        .profile-section { background: var(--black-soft); }
+
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--jade-dark);
+            margin: 3rem 0;
+            border: 1px solid var(--jade-dark);
+        }
+
+        .persona-cell {
+            background: var(--black-soft);
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .persona-cell .label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--jade);
+            margin-bottom: 0.75rem;
+        }
+
+        .persona-cell .value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--cream);
+        }
+
+        .core-values {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--cream);
+            margin-top: 2.5rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--jade);
+        }
+
+        /* ─── TREND BRIEF ─── */
+        .trend-section { background: var(--black); }
+
+        .trend-columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .trend-col h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--amber);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(212, 148, 75, 0.3);
+        }
+
+        .trend-col li {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: var(--cream-dim);
+            margin-bottom: 1.2rem;
+            list-style: none;
+        }
+
+        .trend-col li strong { color: var(--cream); display: block; margin-bottom: 0.2rem; }
+
+        .tension-box {
+            border: 1px solid var(--jade);
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .tension-box::before {
+            content: 'TENSION WORTH EXPLOITING';
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.4em;
+            color: var(--jade);
+            position: absolute;
+            top: -0.4rem;
+            left: 2rem;
+            background: var(--black);
+            padding: 0 0.75rem;
+        }
+
+        .tension-box p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--cream);
+        }
+
+        /* ─── EDIT SCAN ─── */
+        .edit-section { background: var(--black-soft); }
+
+        .movement-badge {
+            display: inline-block;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 0.6rem 1.4rem;
+            border: 1px solid var(--jade);
+            color: var(--jade);
+            margin-bottom: 3rem;
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .filter-card {
+            padding: 2rem;
+            background: var(--black-card);
+            border: 1px solid var(--black-border);
+        }
+
+        .filter-card h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--jade);
+            margin-bottom: 1.25rem;
+        }
+
+        .filter-card p { font-size: 0.85rem; line-height: 1.75; color: var(--cream-dim); }
+
+        .visual-mood {
+            padding: 3rem;
+            background: var(--black-card);
+            border: 1px solid var(--jade);
+            position: relative;
+            margin-top: 2rem;
+        }
+
+        .visual-mood::before {
+            content: 'VISUAL MOOD';
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.4em;
+            color: var(--jade);
+            position: absolute;
+            top: -0.4rem;
+            left: 2.5rem;
+            background: var(--black-soft);
+            padding: 0 0.75rem;
+        }
+
+        .visual-mood p {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--cream-dim);
+        }
+
+        /* ─── BLUEPRINT ─── */
+        .blueprint-section { background: var(--black); }
+
+        .blueprint-block {
+            margin-bottom: 5rem;
+            padding-bottom: 5rem;
+            border-bottom: 1px solid var(--black-border);
+        }
+
+        .blueprint-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+        .blueprint-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 4rem;
+            color: var(--jade);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .blueprint-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-size: 1.8rem;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .blueprint-sub {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--jade);
+            margin-bottom: 2rem;
+        }
+
+        /* ─── BRAND NAME DISPLAY ─── */
+        .brand-name-display {
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-bottom: 2.5rem;
+            background: linear-gradient(135deg, rgba(0,201,167,0.1) 0%, rgba(212,148,75,0.1) 50%, rgba(58,95,200,0.1) 100%);
+        }
+
+        .brand-name-display h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(3rem, 8vw, 6rem);
+            letter-spacing: 0.15em;
+            color: var(--cream);
+            margin-bottom: 1rem;
+        }
+
+        .brand-name-display .etymology {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            color: var(--cream-muted);
+            font-style: italic;
+        }
+
+        .core-statement-block {
+            text-align: center;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .core-statement-block blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            font-style: italic;
+            color: var(--cream);
+        }
+
+        /* ─── PRODUCT DETAILS ─── */
+        .product-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .product-detail {
+            padding: 2rem;
+            background: var(--black-card);
+            border-left: 2px solid var(--jade);
+        }
+
+        .product-detail h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--jade);
+            margin-bottom: 1rem;
+        }
+
+        .product-detail p { font-size: 0.88rem; line-height: 1.8; color: var(--cream-dim); }
+
+        /* ─── COLOR CHIPS ─── */
+        .color-row {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+
+        .color-chip {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .color-chip::after {
+            content: attr(data-name);
+            position: absolute;
+            bottom: -1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.45rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--cream-muted);
+            white-space: nowrap;
+        }
+
+        .chip-jade { background: radial-gradient(circle at 30% 30%, #33DFBF, var(--jade-dark)); }
+        .chip-amber { background: radial-gradient(circle at 30% 30%, #E8B06A, var(--amber-dark)); }
+        .chip-cobalt { background: radial-gradient(circle at 30% 30%, #5A7FE8, var(--cobalt)); }
+        .chip-smoke { background: radial-gradient(circle at 30% 30%, #AAAAAA, #666666); }
+
+        /* ─── RITUAL ─── */
+        .ritual-section {
+            background: linear-gradient(180deg, var(--black-soft) 0%, var(--black) 100%);
+            text-align: center;
+        }
+
+        .ritual-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--cream);
+            margin-bottom: 3rem;
+            letter-spacing: 0.05em;
+        }
+
+        .ritual-text {
+            font-size: 0.95rem;
+            line-height: 2;
+            color: var(--cream-dim);
+            max-width: 640px;
+            margin: 0 auto 3rem;
+            text-align: left;
+        }
+
+        .ritual-meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 640px;
+            margin: 0 auto;
+            padding-top: 3rem;
+            border-top: 1px solid var(--black-border);
+        }
+
+        .ritual-meta-item .meta-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--jade);
+            margin-bottom: 0.5rem;
+        }
+
+        .ritual-meta-item p {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--cream-muted);
+        }
+
+        /* ─── GAP SPECTRUM ─── */
+        .gap-section { background: var(--black-soft); }
+
+        .gap-spectrum {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 3rem 0;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        .gap-spectrum::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--cream-ghost), var(--jade), var(--cream-ghost));
+        }
+
+        .gap-pole {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            background: var(--black-soft);
+            padding: 0 1rem;
+        }
+
+        .gap-pole .pole-name {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--cream-muted);
+        }
+
+        .gap-pole .pole-desc {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.8rem;
+            color: var(--cream-muted);
+        }
+
+        .gap-center {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            background: var(--jade);
+            color: var(--black);
+            padding: 1.2rem 2rem;
+        }
+
+        .gap-center .center-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-size: 1.2rem;
+            letter-spacing: 0.08em;
+        }
+
+        .gap-center .center-desc {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.5rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+        }
+
+        /* ─── COVER PHOTO ─── */
+        .spread-cover-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto 3rem;
+        }
+
+        .spread-cover {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+        }
+
+        .spread-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .spread-cover__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 35%, transparent 55%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+            padding-bottom: 3rem;
+        }
+
+        .spread-cover__celebrity {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--jade);
+            margin-bottom: 0.6rem;
+        }
+
+        .spread-cover__brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            letter-spacing: 0.12em;
+            color: var(--cream);
+            line-height: 1;
+        }
+
+        /* ─── BRAND CARD ─── */
+        .brand-card {
+            aspect-ratio: 4 / 5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 3rem 2rem;
+            background: radial-gradient(ellipse at 40% 30%, var(--jade-glow) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 70%, rgba(212,148,75,0.08) 0%, transparent 50%),
+                        var(--black);
+            overflow: hidden;
+        }
+
+        .brand-card__label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--jade);
+            margin-bottom: 2.5rem;
+        }
+
+        .brand-card__name {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            letter-spacing: 0.12em;
+            line-height: 0.9;
+            color: var(--cream);
+            margin-bottom: 1.5rem;
+        }
+
+        .brand-card__statement {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: clamp(0.95rem, 2vw, 1.25rem);
+            color: var(--cream-muted);
+            max-width: 85%;
+            margin: 0 auto 2.5rem;
+            line-height: 1.5;
+        }
+
+        .brand-card__meta {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.5rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--cream-muted);
+            line-height: 2.2;
+        }
+
+        @media (max-width: 768px) {
+            .spread-cover-row { grid-template-columns: 1fr; max-width: 500px; }
+        }
+
+        /* ─── SPREAD ─── */
+        .spread-section { background: var(--black); padding-bottom: 0; }
+
+        .spread-mock {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 70vh;
+            margin-top: 3rem;
+        }
+
+        .spread-left {
+            background: linear-gradient(160deg, var(--black-card) 0%, rgba(0,201,167,0.08) 40%, rgba(212,148,75,0.08) 100%);
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .spread-left p {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: var(--cream-dim);
+        }
+
+        .spread-right {
+            background: var(--jade-dark);
+            color: var(--black);
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .spread-right .spread-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            line-height: 1.5;
+            color: var(--black);
+        }
+
+        .spread-right .spread-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 1.2rem;
+            letter-spacing: 0.15em;
+            color: var(--black);
+        }
+
+        .spread-right .spread-brand span {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            display: block;
+            margin-top: 0.3rem;
+            opacity: 0.6;
+        }
+
+        /* ─── RETAIL ─── */
+        .retail-section { background: var(--black-soft); }
+
+        .retail-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .retail-feature h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--jade);
+            margin-bottom: 1rem;
+        }
+
+        .retail-feature p { font-size: 0.88rem; line-height: 1.8; color: var(--cream-dim); }
+
+        .signature-detail {
+            margin-top: 4rem;
+            padding: 3rem;
+            background: var(--black-card);
+            border: 1px solid var(--jade);
+            position: relative;
+        }
+
+        .signature-detail::before {
+            content: 'SIGNATURE DETAIL';
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.4em;
+            color: var(--jade);
+            position: absolute;
+            top: -0.4rem;
+            left: 2.5rem;
+            background: var(--black-soft);
+            padding: 0 0.75rem;
+        }
+
+        .signature-detail p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--cream-dim);
+        }
+
+        /* ─── SUMMARY ─── */
+        .summary-section { background: var(--black); }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 3rem;
+        }
+
+        .summary-table tr { border-bottom: 1px solid var(--black-border); }
+
+        .summary-table td { padding: 1.3rem 0; vertical-align: top; }
+
+        .summary-table td:first-child {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--jade);
+            width: 200px;
+            padding-right: 2rem;
+        }
+
+        .summary-table td:last-child {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--cream-dim);
+        }
+
+        .summary-table td:last-child em { color: var(--cream); }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            padding: 3rem 2rem;
+            background: var(--black);
+            border-top: 1px solid var(--black-border);
+            text-align: center;
+        }
+
+        .footer p {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--cream-ghost);
+            line-height: 2;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            section { padding: 5rem 1.5rem; }
+            .persona-grid, .trend-columns, .filter-grid,
+            .product-detail-grid, .ritual-meta, .retail-features { grid-template-columns: 1fr; }
+            .gap-spectrum { flex-direction: column; gap: 1.5rem; }
+            .gap-spectrum::before { display: none; }
+            .spread-mock { grid-template-columns: 1fr; }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ─── NAV ─── */
+        .back-nav {
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+            z-index: 100;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--cream-muted);
+            text-decoration: none;
+            padding: 0.5rem 0.8rem;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--black-border);
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .back-nav:hover {
+            color: var(--jade);
+            border-color: var(--jade);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../index.html" class="back-nav">&larr; Gallery</a>
+
+    <header class="hero">
+        <div class="hero-content">
+            <p class="hero-label">Celebrity Brand Strategy Agent &mdash; Case 004</p>
+            <h1 class="hero-brand">APR&Egrave;S</h1>
+            <p class="hero-statement">&ldquo;Everything good happens after the first drink.&rdquo;</p>
+            <div class="hero-meta">
+                Troye Sivan &times; Home-Hosting Essentials<br>
+                Sweating Glass &mdash; Berlin Raw &times; Global Indie<br>
+                March 2026
+            </div>
+        </div>
+        <div class="hero-scroll"><span></span></div>
+    </header>
+
+    <section class="profile-section">
+        <div class="container fade-in">
+            <span class="phase-tag">Phase 1</span>
+            <h2 class="section-title">Deep Profile</h2>
+            <div class="divider"></div>
+            <div class="persona-grid">
+                <div class="persona-cell">
+                    <p class="label">Energy</p>
+                    <p class="value">Electric</p>
+                </div>
+                <div class="persona-cell">
+                    <p class="label">Register</p>
+                    <p class="value">Intimate</p>
+                </div>
+                <div class="persona-cell">
+                    <p class="label">Mode</p>
+                    <p class="value">Subversive</p>
+                </div>
+            </div>
+            <p class="body-text">Troye Sivan is a figure built on controlled contradiction &mdash; a YouTube-era diarist who became a stadium-scale pop spectacle without ever losing the sense that you&rsquo;re watching something intimate. His visual language is Bold Winter: saturated neons, electric jade, vinyl surfaces, high-contrast lighting borrowed equally from the club and the gallery. But underneath the spectacle is a deeply personal, diary-like mode &mdash; the camera roll aesthetic, the slightly &ldquo;off&rdquo; frame, the beauty found in the rough-hewn.</p>
+            <p class="core-values">His queerness is not a subject &mdash; it is the <em>grammar</em> of his aesthetic. The Sweat Tour with Charli XCX was a masterclass in queer communal energy: bodies in proximity, shared heat, the transformation that happens when a room full of people decides to stop performing composure.</p>
+        </div>
+    </section>
+
+    <section class="trend-section">
+        <div class="container--wide fade-in">
+            <span class="phase-tag">Phase 1.5 &mdash; Live Trend Scan</span>
+            <h2 class="section-title">Trend Brief</h2>
+            <p class="section-subtitle">Cultural signals pulled March 2026</p>
+            <div class="trend-columns">
+                <div class="trend-col">
+                    <h3>Category Pulse</h3>
+                    <ul>
+                        <li><strong>Handblown glassware renaissance</strong>Mass production fatigue drives 18% increase in artisan glassware demand. Organic forms, raw finishes, visible imperfections &mdash; every glass a conversation starter.</li>
+                        <li><strong>The &ldquo;jewel-box bar&rdquo; as domestic centerpiece</strong>Dedicated wet bars with display-forward design and curated glass storage are the most requested living room feature for 2026.</li>
+                        <li><strong>Bold color reclaims the table</strong>Glasses in amber, emerald, and cobalt replace clear minimalism. The table becomes a stage for expressive material culture.</li>
+                    </ul>
+                </div>
+                <div class="trend-col">
+                    <h3>Celebrity Current Moment</h3>
+                    <ul>
+                        <li><strong>Fourth album in the studio</strong>Post-Sweat Tour, Troye is recording album four &mdash; self-described as &ldquo;really inspired by sex.&rdquo; The sensual, body-forward creative mode continues.</li>
+                        <li><strong>Sweat Tour residue</strong>The Charli XCX co-headline (Fall 2024) left a cultural imprint: shared queer spectacle, communal sweat, neon-drenched intimacy at arena scale.</li>
+                        <li><strong>Origins podcast + Grammy presence</strong>Discussed queer forebearers on Audible&rsquo;s <em>Origins</em>. Consistent fashion presence &mdash; always slightly off-kilter, always authentic.</li>
+                    </ul>
+                </div>
+                <div class="trend-col">
+                    <h3>Macro Winds</h3>
+                    <ul>
+                        <li><strong>Hospitality goes &ldquo;evocative&rdquo;</strong>Every material, texture, and scent is an instrument in an orchestrated composition. Spaces that resonate emotionally replace transactional luxury.</li>
+                        <li><strong>Berlin nightlife as design language</strong>Industrial textures, bold lighting, eclectic surfaces &mdash; nightlife aesthetic is bleeding into residential design.</li>
+                        <li><strong>The after-party as design archetype</strong>The &ldquo;night in that feels like going out&rdquo; is shaping how young creatives design their living spaces.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tension-box">
+                <p>Troye Sivan built his career on making the intimate feel electric and the electric feel intimate &mdash; and the design world is now collapsing the boundary between &ldquo;nightlife venue&rdquo; and &ldquo;home,&rdquo; creating a perfect opening for hosting objects that carry the energy of a night out into the architecture of staying in.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="edit-section">
+        <div class="container--wide fade-in">
+            <span class="phase-tag">Phase 2</span>
+            <h2 class="section-title">The &ldquo;Edit&rdquo; Scan</h2>
+            <div class="divider"></div>
+            <div class="movement-badge">Sweating Glass &nbsp;&#12304;&#27735;&#12398;&#12460;&#12521;&#12473;&#12305;</div>
+            <div class="filter-grid">
+                <div class="filter-card">
+                    <h3>Voo Store &mdash; Raw &times; Refined</h3>
+                    <p>The tension is not industrial vs. luxury &mdash; it&rsquo;s <em>sweat</em> vs. <em>glass</em>. The raw element is the body: heat, proximity, condensation rings. The refined element is the vessel: blown glass catching neon light, polished enough to become a mirror. Glassware that looks like it emerged from a Kreuzberg studio at 3 AM &mdash; color-saturated, slightly asymmetric, with trapped air bubbles that catch light like club lasers.</p>
+                </div>
+                <div class="filter-card">
+                    <h3>TSUTAYA &mdash; Lifestyle Proposal</h3>
+                    <p>Not &ldquo;entertaining&rdquo; but the <em>architecture of proximity</em>. Objects organized by social choreography, not product type. A glass set is &ldquo;The First Round.&rdquo; A linen runner is &ldquo;The Surface Where You Set Things Down When the Conversation Gets Good.&rdquo; Each object is a stage direction for intimacy.</p>
+                </div>
+                <div class="filter-card">
+                    <h3>Indie Print &mdash; Analog Appreciation</h3>
+                    <p>Troye&rsquo;s YouTube origins are the ultimate indie credential &mdash; handmade, diary-like, camera-roll aesthetic. The brand should feel documented by a friend with a film camera at 1 AM: slightly out of focus, color-saturated, the warmth of a room full of people you chose. Packaging references zine culture &mdash; Risograph energy, hand-numbered editions.</p>
+                </div>
+            </div>
+            <div class="visual-mood">
+                <p>A table after the party is underway &mdash; not before, not after, but mid-evening. Glasses in electric jade and deep amber catch the glow of a single, low-hanging pendant lamp that casts everything in warm honey-gold. A linen runner in matte black is creased where someone leaned on it. Condensation pools around the base of a glass. A hand &mdash; rings, chipped nail polish &mdash; is mid-reach across the table. The background is soft-focus: bodies, warmth, the suggestion of music. The image smells like bergamot and warm skin.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="blueprint-section">
+        <div class="container fade-in">
+            <span class="phase-tag">Phase 3 &mdash; The Blueprint</span>
+            <h2 class="section-title">Brand Concept</h2>
+            <div class="divider"></div>
+
+            <div class="blueprint-block">
+                <div class="blueprint-number">01</div>
+                <div class="blueprint-heading">Brand Name &amp; Core Logic</div>
+                <div class="blueprint-sub">The Foundation</div>
+                <div class="brand-name-display">
+                    <h2>APR&Egrave;S</h2>
+                    <p class="etymology">French: &ldquo;after&rdquo; &mdash; the space between arrival and intimacy, what comes next</p>
+                </div>
+                <div class="core-statement-block">
+                    <blockquote>&ldquo;Everything good happens after the first drink.&rdquo;</blockquote>
+                </div>
+                <p class="body-text">Troye Sivan&rsquo;s entire creative career is built on what happens <em>after</em> the performance of composure drops &mdash; the diary entry after the public face, the sweat after the opening song, the real conversation after the small talk. APR&Egrave;S is a home-hosting essentials line that designs for <strong>the second half of the evening</strong>: the moment when the lighting gets lower, the glasses get refilled, and the table becomes the center of something real. It is not party supply. It is the material residue of genuine connection.</p>
+            </div>
+
+            <div class="blueprint-block">
+                <div class="blueprint-number">02</div>
+                <div class="blueprint-heading">Hero Product</div>
+                <div class="blueprint-sub">&ldquo;Condensation&rdquo; &mdash; Hand-Blown Chromatic Glassware Set</div>
+
+                <div class="color-row">
+                    <div class="color-chip chip-jade" data-name="Jade"></div>
+                    <div class="color-chip chip-amber" data-name="Amber"></div>
+                    <div class="color-chip chip-cobalt" data-name="Cobalt"></div>
+                    <div class="color-chip chip-smoke" data-name="Smoke"></div>
+                </div>
+
+                <div class="product-detail-grid">
+                    <div class="product-detail">
+                        <h4>Glass</h4>
+                        <p>Hand-blown borosilicate in a proprietary color technique: each glass transitions from deep, saturated color at the base (jade, amber, cobalt, smoke) to clear at the rim &mdash; as if the color is <em>rising</em> like heat. Trapped micro-air bubbles scatter light like distant club lasers. Each glass in the set is a different color &mdash; not a matching set but a <em>cast of characters</em>.</p>
+                    </div>
+                    <div class="product-detail">
+                        <h4>Form</h4>
+                        <p>Slightly bottom-heavy, with a gentle convex curve that fits the palm rather than the fingertips &mdash; you <em>hold</em> these. The base has a subtle concave dimple that catches condensation, pooling it into a jewel-like puddle. The water ring it leaves on the table is a perfect circle of color-tinted moisture &mdash; the residue of use as decoration.</p>
+                    </div>
+                    <div class="product-detail">
+                        <h4>Tactile Feel</h4>
+                        <p>Warm to the touch &mdash; borosilicate retains the temperature of whatever it holds. The surface has a barely perceptible texture, like touching a pane of glass in a room where someone has been breathing.</p>
+                    </div>
+                    <div class="product-detail">
+                        <h4>Packaging</h4>
+                        <p>Nested in a molded recycled pulp tray (matte black, raw texture). Outer sleeve in heavy stock, printed in a single neon spot color (jade) on black &mdash; Risograph energy. Includes a folded card with a playlist QR code: Troye-curated music for &ldquo;the second half of the evening.&rdquo; Inside: <em>&ldquo;A glass is just a room you can hold.&rdquo;</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ritual-section">
+        <div class="container fade-in">
+            <div class="blueprint-number" style="color: rgba(0,201,167,0.15);">03</div>
+            <div class="blueprint-heading" style="margin-bottom: 0.5rem;">Core Ritual</div>
+            <div class="blueprint-sub" style="margin-bottom: 3rem;">The Behavioral Catalyst</div>
+            <h3 class="ritual-name">&#12304; The Second Pour &#12305;</h3>
+            <p class="ritual-text">APR&Egrave;S does not design for the arrival. It designs for the moment <em>after</em> everyone has settled &mdash; coats off, shoes optional, the first drink gone and the second being poured without anyone asking. The table has become the center of gravity. Someone has moved the candle closer. The music has shifted from background to something someone chose on purpose.</p>
+            <p class="ritual-text">You pour into the Condensation glasses and the color at the base catches the low light &mdash; four different hues around a table, like stained glass in a chapel built for Friday night. The linen runner beneath has gathered creases from elbows and set-down plates. No one is performing. The room is its own event.</p>
+            <div class="ritual-meta">
+                <div class="ritual-meta-item">
+                    <p class="meta-label">Time</p>
+                    <p>10:30 PM onward.</p>
+                </div>
+                <div class="ritual-meta-item">
+                    <p class="meta-label">Sound</p>
+                    <p>The playlist has found its groove &mdash; no one is skipping tracks.</p>
+                </div>
+                <div class="ritual-meta-item">
+                    <p class="meta-label">Duration</p>
+                    <p>Until someone says &ldquo;one more&rdquo; and means it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gap-section">
+        <div class="container--wide fade-in">
+            <div class="blueprint-number">04</div>
+            <div class="blueprint-heading">Market Gap</div>
+            <div class="blueprint-sub">The Unoccupied Niche</div>
+            <p class="body-text"><strong>Mode A:</strong> The registry default &mdash; &ldquo;good glasses&rdquo; that whisper affluence and say nothing. <strong>Mode B:</strong> The Instagram tablescape &mdash; photographed before anyone sits down, optimized for content not contact. <strong>Mode C:</strong> The disposable &mdash; Solo cups, Amazon basics, objects that announce &ldquo;I don&rsquo;t care.&rdquo;</p>
+            <p class="body-text" style="margin-top: 1.5rem;">None of these modes serve the queer dinner party, the late-night kitchen gathering, the &ldquo;come over, I&rsquo;m cooking&rdquo; text that turns into a five-hour conversation. There are no hosting objects designed for intimacy at close range.</p>
+            <div class="gap-spectrum">
+                <div class="gap-pole">
+                    <p class="pole-name">Iittala</p>
+                    <p class="pole-desc">Beautiful but cold</p>
+                </div>
+                <div class="gap-center">
+                    <p class="center-name">APR&Egrave;S</p>
+                    <p class="center-desc">Nightlife energy, domestic scale</p>
+                </div>
+                <div class="gap-pole">
+                    <p class="pole-name">Urban Outfitters</p>
+                    <p class="pole-desc">Fun but disposable</p>
+                </div>
+            </div>
+            <p class="body-text"><strong>Why Troye Sivan:</strong> He made queerness feel like a party invitation rather than a political statement. His YouTube-to-arena trajectory proves he understands both scales: the two-person conversation and the thousand-person communion. His Sweat Tour was literally a masterclass in <em>what happens when people share space and heat</em>.</p>
+        </div>
+    </section>
+
+    <section class="spread-section">
+        <div class="container--wide fade-in">
+            <div class="blueprint-number">05</div>
+            <div class="blueprint-heading">Magazine Spread</div>
+            <div class="blueprint-sub"><em>032c</em> &mdash; Berlin Avant-Garde</div>
+            <div class="spread-cover-row fade-in">
+                <div class="spread-cover">
+                    <img src="Troye-Sivan-APRES-4-5.png" alt="APR&Egrave;S Concept Board">
+                    <div class="spread-cover__overlay">
+                        <span class="spread-cover__celebrity">Troye Sivan</span>
+                        <span class="spread-cover__brand">APR&Egrave;S</span>
+                    </div>
+                </div>
+                <div class="brand-card">
+                    <p class="brand-card__label">Celebrity Brand Strategy Agent &mdash; Case 004</p>
+                    <h2 class="brand-card__name">APR&Egrave;S</h2>
+                    <p class="brand-card__statement">&ldquo;Everything good happens after the first drink.&rdquo;</p>
+                    <div class="brand-card__meta">
+                        Troye Sivan &times; Home-Hosting Essentials<br>
+                        Sweating Glass &mdash; Berlin Raw &times; Global Indie<br>
+                        March 2026
+                    </div>
+                </div>
+            </div>
+            <p class="body-text">Shot by Brianna Capozzi or Harley Weir. Camera at table level, close enough to feel the condensation. Available light only.</p>
+        </div>
+        <div class="spread-mock">
+            <div class="spread-left">
+                <p>The table, mid-evening. Four Condensation glasses in jade, amber, cobalt, and smoke scattered naturally on a matte black linen runner. One glass is half-full, catching pendant light through its jade base. Another has left a tinted water ring. A hand is in the frame, mid-gesture, blurred with motion. The background is shallow-focus warmth: the suggestion of a kitchen, a doorway, someone leaning against a wall. The palette is neon-dark: black, jade, amber, the honey of tungsten light.</p>
+            </div>
+            <div class="spread-right">
+                <p class="spread-quote">&ldquo;A glass is just a room you can hold.&rdquo;</p>
+                <div class="spread-brand">
+                    APR&Egrave;S
+                    <span>Hosting for the Second Half of the Evening</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="retail-section">
+        <div class="container--wide fade-in">
+            <div class="blueprint-number">06</div>
+            <div class="blueprint-heading">Retail Space Concept</div>
+            <div class="blueprint-sub">&ldquo;The Pre-Game&rdquo;</div>
+            <p class="body-text"><strong>Location:</strong> A basement-level space in Berlin-Kreuzberg or a Bushwick storefront in Brooklyn &mdash; the neighborhood&rsquo;s DIY/queer energy over Manhattan&rsquo;s polish.</p>
+            <div class="retail-features">
+                <div class="retail-feature">
+                    <h4>Space &amp; Materials</h4>
+                    <p>Enter below street level &mdash; the descent signals transition from public to private. Low ceiling. Walls are raw plaster, painted matte black from waist-height down (the &ldquo;sweat line&rdquo;). Above: exposed plaster, cracked and imperfect. Pendant lamps in hand-blown glass cast warm, color-saturated pools. Permanently set at 10:30 PM lighting.</p>
+                </div>
+                <div class="retail-feature">
+                    <h4>Experience</h4>
+                    <p>A long communal table runs the center &mdash; set with APR&Egrave;S glassware, linens, and lighting. Always set for a dinner about to happen. Visitors sit, hold the glasses, feel the weight. Product is not on shelves &mdash; it is <em>in use</em> on the table.</p>
+                </div>
+                <div class="retail-feature">
+                    <h4>The Bar</h4>
+                    <p>Along one wall: a functioning bar, minimal &mdash; three bottles, ice, a stack of Condensation glasses. Staff pour drinks. The transaction is secondary to the experience of using the product in context: a room, a table, other people, a drink.</p>
+                </div>
+                <div class="retail-feature">
+                    <h4>Atmosphere</h4>
+                    <p>Scent: bergamot, warm cedar, a trace of cigarette smoke that might be imagined. The smell of a good night. Sound: a playlist that starts when the first visitor enters and never repeats.</p>
+                </div>
+            </div>
+            <div class="signature-detail">
+                <p>The bathroom mirror has a single line hand-painted at eye level in neon jade: <em>&ldquo;You look like someone I&rsquo;d stay out late with.&rdquo;</em> You only see it when you wash your hands. It is the only text in the entire space.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="summary-section">
+        <div class="container fade-in">
+            <span class="phase-tag">Summary</span>
+            <h2 class="section-title">Brand Architecture</h2>
+            <table class="summary-table">
+                <tr><td>Aesthetic Movement</td><td>Sweating Glass</td></tr>
+                <tr><td>Tension</td><td>Nightlife spectacle &times; Domestic intimacy</td></tr>
+                <tr><td>Material Signature</td><td>Hand-blown chromatic borosilicate, matte black linen, recycled pulp, neon spot-color print</td></tr>
+                <tr><td>Emotional Territory</td><td>The second half of the evening &mdash; proximity, warmth, the room after composure drops</td></tr>
+                <tr><td>Competitive Position</td><td>Between Iittala (beautiful but cold) and Urban Outfitters (fun but disposable)</td></tr>
+                <tr><td>Cultural Moment</td><td>Post-Sweat Tour, queer communal energy entering domestic design, nightlife-as-interior-language</td></tr>
+                <tr><td>One-Line Pitch</td><td><em>Hosting essentials for people who think the best part of the night happens after the first drink.</em></td></tr>
+            </table>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>
+            Case generated by Celebrity Brand Strategy Agent v3.0<br>
+            Phase 1.5 Live Trend Scan Active &bull; Trend Data Sourced March 2026<br>
+            Curational Engine: Voo Store &bull; TSUTAYA Books &bull; doyouread.me? &bull; 032c
+        </p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

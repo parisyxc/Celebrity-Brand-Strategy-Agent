@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Reference images (local only)
+image-ref/
+
+# Base config files
+*.base
+
+# Obsidian vault
+.obsidian/
+
+# Clippings (local research)
+Clippings/
+
+# Local notes
+base system setup.md
+
+# Editor
+.vscode/
+.idea/
+*.swp

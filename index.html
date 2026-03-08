@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebrity Brand Strategy Agent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #0A0A0A;
+            --black-soft: #141414;
+            --black-card: #1A1A1A;
+            --black-border: #2A2A2A;
+            --cream: #F5F0E8;
+            --cream-dim: rgba(245, 240, 232, 0.85);
+            --cream-muted: rgba(245, 240, 232, 0.5);
+            --cream-ghost: rgba(245, 240, 232, 0.15);
+            --honey: #D4A94B;
+            --honey-glow: rgba(212, 169, 75, 0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            background: var(--black);
+            color: var(--cream);
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50vw;
+            height: 50vw;
+            border-radius: 50%;
+            background: radial-gradient(ellipse, var(--honey-glow) 0%, transparent 70%);
+            animation: pulse 10s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .hero-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.45em;
+            text-transform: uppercase;
+            color: var(--honey);
+            margin-bottom: 3rem;
+        }
+
+        .hero-hook {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+            line-height: 1.2;
+            color: var(--cream);
+            margin-bottom: 2rem;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-hook em {
+            font-style: italic;
+            color: var(--honey);
+        }
+
+        .hero-desc {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--cream-muted);
+            max-width: 520px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .hero-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-tag {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.5rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--cream-muted);
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--black-border);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .hero-scroll span {
+            display: block;
+            width: 1px;
+            height: 48px;
+            background: var(--honey);
+            margin: 0 auto;
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* ─── CASES ─── */
+        .cases-section {
+            padding: 6rem 2rem 8rem;
+        }
+
+        .cases-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .cases-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--honey);
+            margin-bottom: 1rem;
+        }
+
+        .cases-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--cream);
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* ─── CASE CARD ─── */
+        .case-card {
+            position: relative;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .case-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .case-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: filter 0.4s ease;
+        }
+
+        .case-card:hover img {
+            filter: brightness(1.05);
+        }
+
+        .case-card__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.15) 35%, transparent 55%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+            padding-bottom: 2.5rem;
+            transition: background 0.4s ease;
+        }
+
+        .case-card:hover .case-card__overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 40%, transparent 60%);
+        }
+
+        .case-card__category {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.45rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--cream-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .case-card__celebrity {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--honey);
+            margin-bottom: 0.5rem;
+        }
+
+        .case-card__brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            letter-spacing: 0.12em;
+            color: var(--cream);
+            line-height: 1;
+        }
+
+        .case-card__view {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.5rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--cream-muted);
+            margin-top: 1.2rem;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .case-card:hover .case-card__view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── METHOD ─── */
+        .method-section {
+            padding: 6rem 2rem;
+            background: var(--black-soft);
+        }
+
+        .method-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .method-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--honey);
+            margin-bottom: 1.5rem;
+        }
+
+        .method-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            color: var(--cream);
+            margin-bottom: 2rem;
+        }
+
+        .method-text {
+            font-size: 0.88rem;
+            line-height: 1.9;
+            color: var(--cream-dim);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .method-phases {
+            display: flex;
+            gap: 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .method-phase {
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--black-border);
+            margin: -0.5px;
+        }
+
+        .method-phase .phase-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 1.5rem;
+            color: var(--honey);
+            opacity: 0.4;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .method-phase .phase-name {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.45rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--cream-muted);
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--black-border);
+            text-align: center;
+        }
+
+        .footer p {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.5rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--cream-ghost);
+            line-height: 2.2;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .cases-grid { grid-template-columns: 1fr; max-width: 500px; }
+            .hero-tags { gap: 0.5rem; }
+            .method-phases { flex-direction: column; align-items: center; }
+        }
+
+        /* ─── ANIMATIONS ─── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content fade-in">
+            <p class="hero-label">Celebrity Brand Strategy Agent</p>
+            <h1 class="hero-hook">If a celebrity created a brand,<br>what would <em>it</em> be?</h1>
+            <p class="hero-desc">An AI-powered curational engine that transforms celebrity personas into fully realized brand concepts &mdash; grounded in live cultural trends, editorial taste cultures, and professional retail strategy.</p>
+            <div class="hero-tags">
+                <span class="hero-tag">AI-Powered</span>
+                <span class="hero-tag">Live Trend Scanning</span>
+                <span class="hero-tag">Editorial-Grade Output</span>
+            </div>
+        </div>
+        <div class="hero-scroll"><span></span></div>
+    </header>
+
+    <section class="cases-section">
+        <div class="cases-header fade-in">
+            <p class="cases-label">Published Concepts</p>
+            <h2 class="cases-title">Brand Blueprints</h2>
+        </div>
+        <div class="cases-grid">
+
+            <a href="cases/Troye-Sivan-APRES-Brand-Blueprint.html" class="case-card fade-in">
+                <img src="cases/Troye-Sivan-APRES-4-5.png" alt="Troye Sivan &mdash; APR&Egrave;S">
+                <div class="case-card__overlay">
+                    <span class="case-card__category">Home-Hosting Essentials</span>
+                    <span class="case-card__celebrity">Troye Sivan</span>
+                    <span class="case-card__brand">APR&Egrave;S</span>
+                    <span class="case-card__view">View Blueprint &rarr;</span>
+                </div>
+            </a>
+
+            <a href="cases/Harry-Styles-FONDRE-Brand-Blueprint.html" class="case-card fade-in">
+                <img src="cases/Harry-Styles-FONDRE-4-5.png" alt="Harry Styles &mdash; FONDRE">
+                <div class="case-card__overlay">
+                    <span class="case-card__category">Home &amp; Lifestyle</span>
+                    <span class="case-card__celebrity">Harry Styles</span>
+                    <span class="case-card__brand">FONDRE</span>
+                    <span class="case-card__view">View Blueprint &rarr;</span>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <section class="method-section">
+        <div class="method-inner fade-in">
+            <p class="method-label">The Method</p>
+            <h2 class="method-title">Six-Phase Curational Pipeline</h2>
+            <p class="method-text">Each concept is generated through a rigorous pipeline &mdash; from deep persona profiling and live cultural trend scanning, through three parallel curational filters, to a complete brand blueprint with hero product, retail space concept, and magazine-ready editorial spread.</p>
+            <div class="method-phases">
+                <div class="method-phase">
+                    <p class="phase-num">1</p>
+                    <p class="phase-name">Deep Profile</p>
+                </div>
+                <div class="method-phase">
+                    <p class="phase-num">1.5</p>
+                    <p class="phase-name">Live Trend Scan</p>
+                </div>
+                <div class="method-phase">
+                    <p class="phase-num">2</p>
+                    <p class="phase-name">Edit Scan</p>
+                </div>
+                <div class="method-phase">
+                    <p class="phase-num">3</p>
+                    <p class="phase-name">Blueprint</p>
+                </div>
+                <div class="method-phase">
+                    <p class="phase-num">4</p>
+                    <p class="phase-name">Concept Board</p>
+                </div>
+                <div class="method-phase">
+                    <p class="phase-num">5</p>
+                    <p class="phase-name">Cover Image</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>
+            Celebrity Brand Strategy Agent v3.0<br>
+            Curational Engine: Voo Store &bull; TSUTAYA Books &bull; doyouread.me? &bull; 032c &bull; Num&eacute;ro<br>
+            Powered by Claude
+        </p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

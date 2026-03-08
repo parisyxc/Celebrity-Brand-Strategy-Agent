@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FONDRE — Brand Blueprint</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --terracotta: #C4745A;
+            --terracotta-light: #D4927E;
+            --lilac: #B8A9C9;
+            --lilac-light: #D6CCE4;
+            --cream: #F5F0E8;
+            --cream-dark: #EDE6D8;
+            --honey: #D4A94B;
+            --celadon: #A8C5B2;
+            --flesh-pink: #E0BFB8;
+            --ink: #1A1714;
+            --ink-light: #3A3530;
+            --ink-muted: #6B6560;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--ink);
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(
+                170deg,
+                var(--cream) 0%,
+                var(--lilac-light) 35%,
+                var(--flesh-pink) 60%,
+                var(--terracotta-light) 100%
+            );
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            border-radius: 50% 50% 50% 50% / 60% 40% 60% 40%;
+            background: radial-gradient(ellipse, var(--lilac-light) 0%, transparent 70%);
+            opacity: 0.6;
+            animation: drift 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            left: -5%;
+            width: 45vw;
+            height: 45vw;
+            border-radius: 40% 60% 50% 50% / 50% 50% 60% 40%;
+            background: radial-gradient(ellipse, var(--terracotta-light) 0%, transparent 70%);
+            opacity: 0.4;
+            animation: drift 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(2vw, -3vh) rotate(2deg); }
+            66% { transform: translate(-1vw, 2vh) rotate(-1deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .hero-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            margin-bottom: 3rem;
+        }
+
+        .hero-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(4rem, 12vw, 10rem);
+            letter-spacing: 0.08em;
+            line-height: 0.9;
+            color: var(--ink);
+            margin-bottom: 2rem;
+        }
+
+        .hero-statement {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            color: var(--ink-light);
+            max-width: 500px;
+            margin: 0 auto 3.5rem;
+            line-height: 1.5;
+        }
+
+        .hero-meta {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            line-height: 2.2;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .hero-scroll span {
+            display: block;
+            width: 1px;
+            height: 48px;
+            background: var(--ink-muted);
+            margin: 0 auto;
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(1.3); }
+        }
+
+        /* ─── SECTION SYSTEM ─── */
+        section {
+            padding: 8rem 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .container--wide {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ─── PHASE HEADER ─── */
+        .phase-tag {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            color: var(--ink);
+        }
+
+        .section-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: 1.25rem;
+            color: var(--ink-muted);
+            margin-bottom: 3rem;
+            line-height: 1.5;
+        }
+
+        /* ─── PROFILE SECTION ─── */
+        .profile-section {
+            background: var(--cream);
+        }
+
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--terracotta-light);
+            margin: 3rem 0;
+            border: 1px solid var(--terracotta-light);
+        }
+
+        .persona-cell {
+            background: var(--cream);
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .persona-cell .label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .persona-cell .value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .dna-text {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: var(--ink-light);
+            max-width: 720px;
+        }
+
+        .core-values {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--ink);
+            margin-top: 2.5rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--lilac);
+        }
+
+        /* ─── TREND BRIEF ─── */
+        .trend-section {
+            background: var(--ink);
+            color: var(--cream);
+        }
+
+        .trend-section .phase-tag {
+            color: var(--honey);
+        }
+
+        .trend-section .section-title {
+            color: var(--cream);
+        }
+
+        .trend-section .section-subtitle {
+            color: var(--cream-dark);
+            opacity: 0.6;
+        }
+
+        .trend-columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .trend-col h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--honey);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(212, 169, 75, 0.3);
+        }
+
+        .trend-col li {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: rgba(245, 240, 232, 0.8);
+            margin-bottom: 1.2rem;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .trend-col li strong {
+            color: var(--cream);
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .tension-box {
+            border: 1px solid var(--honey);
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .tension-box::before {
+            content: 'TENSION WORTH EXPLOITING';
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.4em;
+            color: var(--honey);
+            position: absolute;
+            top: -0.4rem;
+            left: 2rem;
+            background: var(--ink);
+            padding: 0 0.75rem;
+        }
+
+        .tension-box p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--cream);
+        }
+
+        /* ─── EDIT SCAN ─── */
+        .edit-section {
+            background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+        }
+
+        .movement-badge {
+            display: inline-block;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 0.6rem 1.4rem;
+            border: 1px solid var(--ink);
+            margin-bottom: 3rem;
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .filter-card {
+            padding: 2rem;
+            background: var(--cream);
+            border: 1px solid rgba(26, 23, 20, 0.1);
+        }
+
+        .filter-card h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 1.25rem;
+        }
+
+        .filter-card p {
+            font-size: 0.85rem;
+            line-height: 1.75;
+            color: var(--ink-light);
+        }
+
+        .visual-mood {
+            padding: 3rem;
+            background: var(--ink);
+            color: var(--cream);
+            position: relative;
+            margin-top: 2rem;
+        }
+
+        .visual-mood::before {
+            content: 'VISUAL MOOD';
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.4em;
+            color: var(--honey);
+            position: absolute;
+            top: -0.4rem;
+            left: 2.5rem;
+            background: var(--ink);
+            padding: 0 0.75rem;
+        }
+
+        .visual-mood p {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: rgba(245, 240, 232, 0.9);
+        }
+
+        /* ─── BLUEPRINT ─── */
+        .blueprint-section {
+            background: var(--cream);
+        }
+
+        .blueprint-block {
+            margin-bottom: 5rem;
+            padding-bottom: 5rem;
+            border-bottom: 1px solid rgba(26, 23, 20, 0.08);
+        }
+
+        .blueprint-block:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .blueprint-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 4rem;
+            color: var(--terracotta-light);
+            opacity: 0.5;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .blueprint-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-size: 1.8rem;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+        }
+
+        .blueprint-sub {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            margin-bottom: 2rem;
+        }
+
+        .blueprint-text {
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: var(--ink-light);
+            max-width: 720px;
+        }
+
+        .blueprint-text em {
+            font-style: italic;
+            color: var(--ink);
+        }
+
+        /* ─── BRAND NAME BLOCK ─── */
+        .brand-name-display {
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-bottom: 2.5rem;
+            background: linear-gradient(135deg, var(--lilac-light) 0%, var(--flesh-pink) 50%, var(--terracotta-light) 100%);
+            border-radius: 0;
+        }
+
+        .brand-name-display h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(3rem, 8vw, 6rem);
+            letter-spacing: 0.1em;
+            color: var(--ink);
+            margin-bottom: 1rem;
+        }
+
+        .brand-name-display .etymology {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            color: var(--ink-muted);
+            font-style: italic;
+        }
+
+        .core-statement-block {
+            text-align: center;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .core-statement-block blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            font-style: italic;
+            font-weight: 400;
+            color: var(--ink);
+            line-height: 1.4;
+        }
+
+        /* ─── HERO PRODUCT ─── */
+        .product-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .product-detail {
+            padding: 2rem;
+            background: rgba(26, 23, 20, 0.02);
+            border-left: 2px solid var(--terracotta-light);
+        }
+
+        .product-detail h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 1rem;
+        }
+
+        .product-detail p {
+            font-size: 0.88rem;
+            line-height: 1.8;
+            color: var(--ink-light);
+        }
+
+        /* ─── SCENT PROFILE ─── */
+        .scent-profile {
+            margin-top: 3rem;
+            padding: 2.5rem;
+            background: var(--ink);
+            color: var(--cream);
+        }
+
+        .scent-profile h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--honey);
+            margin-bottom: 1.5rem;
+        }
+
+        .scent-layers {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .scent-layer .layer-name {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--honey);
+            margin-bottom: 0.75rem;
+        }
+
+        .scent-layer p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: rgba(245, 240, 232, 0.8);
+        }
+
+        /* ─── RITUAL SECTION ─── */
+        .ritual-section {
+            background: var(--ink);
+            color: var(--cream);
+            text-align: center;
+        }
+
+        .ritual-section .phase-tag {
+            color: var(--honey);
+        }
+
+        .ritual-section .section-title {
+            color: var(--cream);
+        }
+
+        .ritual-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--cream);
+            margin-bottom: 3rem;
+            letter-spacing: 0.05em;
+        }
+
+        .ritual-text {
+            font-size: 0.95rem;
+            line-height: 2;
+            color: rgba(245, 240, 232, 0.85);
+            max-width: 640px;
+            margin: 0 auto 3rem;
+            text-align: left;
+        }
+
+        .ritual-meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 640px;
+            margin: 0 auto;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(245, 240, 232, 0.1);
+        }
+
+        .ritual-meta-item .meta-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--honey);
+            margin-bottom: 0.5rem;
+        }
+
+        .ritual-meta-item p {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: rgba(245, 240, 232, 0.7);
+            line-height: 1.5;
+        }
+
+        /* ─── MARKET GAP ─── */
+        .gap-section {
+            background: var(--cream-dark);
+        }
+
+        .gap-spectrum {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 3rem 0;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        .gap-spectrum::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(
+                to right,
+                var(--ink-muted),
+                var(--terracotta),
+                var(--ink-muted)
+            );
+        }
+
+        .gap-pole {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            background: var(--cream-dark);
+            padding: 0 1rem;
+        }
+
+        .gap-pole .pole-name {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            margin-bottom: 0.3rem;
+        }
+
+        .gap-pole .pole-desc {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.8rem;
+            color: var(--ink-light);
+        }
+
+        .gap-center {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            background: var(--ink);
+            color: var(--cream);
+            padding: 1.2rem 2rem;
+        }
+
+        .gap-center .center-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-size: 1.2rem;
+            letter-spacing: 0.08em;
+        }
+
+        .gap-center .center-desc {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.5rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--honey);
+            margin-top: 0.3rem;
+        }
+
+        /* ─── COVER PHOTO ─── */
+        .spread-cover-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto 3rem;
+        }
+
+        .spread-cover {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+        }
+
+        .spread-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .spread-cover__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26,23,20,0.6) 0%, rgba(26,23,20,0.12) 35%, transparent 55%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+            padding-bottom: 3rem;
+        }
+
+        .spread-cover__celebrity {
+            font-family: 'DM Sans', sans-serif;
+            font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--honey);
+            margin-bottom: 0.6rem;
+        }
+
+        .spread-cover__brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            letter-spacing: 0.12em;
+            color: var(--cream);
+            line-height: 1;
+        }
+
+        /* ─── BRAND CARD ─── */
+        .brand-card {
+            aspect-ratio: 4 / 5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(
+                180deg,
+                var(--cream) 0%,
+                var(--lilac-light) 35%,
+                var(--flesh-pink) 70%,
+                var(--terracotta-light) 100%
+            );
+            overflow: hidden;
+        }
+
+        .brand-card__label {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.55rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .brand-card__name {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            letter-spacing: 0.12em;
+            line-height: 0.9;
+            color: var(--ink);
+            margin-bottom: 1.5rem;
+        }
+
+        .brand-card__statement {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: clamp(0.95rem, 2vw, 1.25rem);
+            color: var(--ink-light);
+            max-width: 85%;
+            margin: 0 auto 2.5rem;
+            line-height: 1.5;
+        }
+
+        .brand-card__meta {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.5rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            line-height: 2.2;
+        }
+
+        /* ─── MAGAZINE SPREAD ─── */
+        .spread-section {
+            background: var(--cream);
+            padding-bottom: 0;
+        }
+
+        .spread-mock {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 70vh;
+            margin-top: 3rem;
+        }
+
+        .spread-left {
+            background: linear-gradient(
+                145deg,
+                var(--cream-dark) 0%,
+                var(--flesh-pink) 40%,
+                var(--lilac-light) 70%,
+                var(--celadon) 100%
+            );
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .spread-left p {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1rem;
+            line-height: 1.9;
+            color: var(--ink-light);
+        }
+
+        .spread-right {
+            background: var(--ink);
+            color: var(--cream);
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .spread-right .spread-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            line-height: 1.5;
+            color: var(--cream);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            max-height: 60vh;
+            margin-left: auto;
+        }
+
+        .spread-right .spread-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 1.2rem;
+            letter-spacing: 0.15em;
+            color: var(--cream);
+        }
+
+        .spread-right .spread-brand span {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            color: rgba(245, 240, 232, 0.5);
+            display: block;
+            margin-top: 0.3rem;
+        }
+
+        .spread-direction {
+            padding: 3rem;
+            background: rgba(26, 23, 20, 0.03);
+            margin-top: 0;
+        }
+
+        .spread-direction h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 1rem;
+        }
+
+        .spread-direction p {
+            font-size: 0.85rem;
+            line-height: 1.8;
+            color: var(--ink-light);
+            max-width: 720px;
+        }
+
+        /* ─── RETAIL SPACE ─── */
+        .retail-section {
+            background: var(--cream-dark);
+        }
+
+        .retail-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .retail-feature h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 1rem;
+        }
+
+        .retail-feature p {
+            font-size: 0.88rem;
+            line-height: 1.8;
+            color: var(--ink-light);
+        }
+
+        .signature-detail {
+            margin-top: 4rem;
+            padding: 3rem;
+            background: var(--ink);
+            color: var(--cream);
+            position: relative;
+        }
+
+        .signature-detail::before {
+            content: 'SIGNATURE DETAIL';
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.4em;
+            color: var(--honey);
+            position: absolute;
+            top: -0.4rem;
+            left: 2.5rem;
+            background: var(--ink);
+            padding: 0 0.75rem;
+        }
+
+        .signature-detail p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(245, 240, 232, 0.9);
+        }
+
+        /* ─── SUMMARY TABLE ─── */
+        .summary-section {
+            background: var(--ink);
+            color: var(--cream);
+        }
+
+        .summary-section .phase-tag {
+            color: var(--honey);
+        }
+
+        .summary-section .section-title {
+            color: var(--cream);
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 3rem;
+        }
+
+        .summary-table tr {
+            border-bottom: 1px solid rgba(245, 240, 232, 0.08);
+        }
+
+        .summary-table td {
+            padding: 1.3rem 0;
+            vertical-align: top;
+        }
+
+        .summary-table td:first-child {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--honey);
+            width: 200px;
+            padding-right: 2rem;
+        }
+
+        .summary-table td:last-child {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: rgba(245, 240, 232, 0.85);
+        }
+
+        .summary-table td:last-child em {
+            color: var(--cream);
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            padding: 3rem 2rem;
+            background: var(--ink);
+            border-top: 1px solid rgba(245, 240, 232, 0.05);
+            text-align: center;
+        }
+
+        .footer p {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(245, 240, 232, 0.3);
+            line-height: 2;
+        }
+
+        /* ─── DIVIDER ─── */
+        .divider {
+            width: 40px;
+            height: 1px;
+            background: var(--terracotta);
+            margin: 0 0 2rem 0;
+        }
+
+        .divider--center {
+            margin: 0 auto 2rem;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            section {
+                padding: 5rem 1.5rem;
+            }
+
+            .persona-grid,
+            .trend-columns,
+            .filter-grid,
+            .product-detail-grid,
+            .scent-layers,
+            .ritual-meta,
+            .retail-features {
+                grid-template-columns: 1fr;
+            }
+
+            .gap-spectrum {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .gap-spectrum::before {
+                top: 0;
+                bottom: 0;
+                left: 50%;
+                right: auto;
+                width: 1px;
+                height: 100%;
+                background: linear-gradient(
+                    to bottom,
+                    var(--ink-muted),
+                    var(--terracotta),
+                    var(--ink-muted)
+                );
+            }
+
+            .spread-cover-row { grid-template-columns: 1fr; max-width: 500px; }
+
+            .spread-mock {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .spread-right .spread-quote {
+                writing-mode: horizontal-tb;
+                max-height: none;
+                margin-left: 0;
+                margin-bottom: 3rem;
+            }
+        }
+
+        /* ─── ANIMATIONS ─── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── NAV ─── */
+        .back-nav {
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+            z-index: 100;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            text-decoration: none;
+            padding: 0.5rem 0.8rem;
+            background: rgba(245, 240, 232, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(26, 23, 20, 0.1);
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .back-nav:hover {
+            color: var(--terracotta);
+            border-color: var(--terracotta);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../index.html" class="back-nav">&larr; Gallery</a>
+
+    <!-- ═══ HERO ═══ -->
+    <header class="hero">
+        <div class="hero-content">
+            <p class="hero-label">Celebrity Brand Strategy Agent &mdash; Case 003</p>
+            <h1 class="hero-brand">FONDRE</h1>
+            <p class="hero-statement">&ldquo;Objects that remember being something else.&rdquo;</p>
+            <div class="hero-meta">
+                Harry Styles &times; Home &amp; Lifestyle<br>
+                Domestic Surrealism &mdash; Global Indie<br>
+                March 2026
+            </div>
+        </div>
+        <div class="hero-scroll"><span></span></div>
+    </header>
+
+    <!-- ═══ PHASE 1: DEEP PROFILE ═══ -->
+    <section class="profile-section">
+        <div class="container fade-in">
+            <span class="phase-tag">Phase 1</span>
+            <h2 class="section-title">Deep Profile</h2>
+            <div class="divider"></div>
+
+            <div class="persona-grid">
+                <div class="persona-cell">
+                    <p class="label">Persona</p>
+                    <p class="value">Gender-Fluid</p>
+                </div>
+                <div class="persona-cell">
+                    <p class="label">Aesthetic</p>
+                    <p class="value">Maximalist</p>
+                </div>
+                <div class="persona-cell">
+                    <p class="label">Register</p>
+                    <p class="value">Surrealist</p>
+                </div>
+            </div>
+
+            <p class="dna-text">
+                Harry Styles is the rare figure who has made fluidity itself an aesthetic position &mdash; not just gender fluidity in fashion (the Gucci gowns, the pearl necklaces, the painted nails), but a fluidity of <em>category</em>. He moves between pop and psychedelia, between stadium spectacle and intimate residency, between Chanel pinstripe and vintage market finds. His visual language is rooted in 1970s maximalism &mdash; saturated color, clashing pattern, furniture-scale jewelry &mdash; but filtered through a contemporary surrealism that makes the familiar feel slightly dreamed.
+            </p>
+
+            <p class="core-values">
+                Joy as subversion. Softness as strength. The domestic as creative canvas. His album <em>Harry&rsquo;s House</em> was not a metaphor &mdash; it was a declaration that the interior life (literally: interiors) is the artistic frontier.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ PHASE 1.5: TREND BRIEF ═══ -->
+    <section class="trend-section">
+        <div class="container--wide fade-in">
+            <span class="phase-tag">Phase 1.5 &mdash; Live Trend Scan</span>
+            <h2 class="section-title">Trend Brief</h2>
+            <p class="section-subtitle">Cultural signals pulled March 2026</p>
+
+            <div class="trend-columns">
+                <div class="trend-col">
+                    <h3>Category Pulse</h3>
+                    <ul>
+                        <li>
+                            <strong>Neo-surrealism dominates objects</strong>
+                            Maison &amp; Objet 2025&ndash;2026 centered surrealism as the design language of the moment. The 2026 theme &ldquo;PAST REVEALS FUTURE&rdquo; foregrounded: Metamorphosis, Mutation, Revisited Baroque, Neo Folklore.
+                        </li>
+                        <li>
+                            <strong>Artisan ceramics as cultural currency</strong>
+                            Tekla launched sculptural ceramic candle vessels with ceramicist Sara Flynn. Henry Holland Studio debuted hand-thrown ceramic vases in Berlin and London. Imperfection is the new premium signal.
+                        </li>
+                        <li>
+                            <strong>Maximalism reclaims home decor</strong>
+                            73% of designers prefer maximalism over minimalism for 2026. Dezeen frames the mood as &ldquo;curated calm over superficial opulence.&rdquo;
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="trend-col">
+                    <h3>Celebrity Current Moment</h3>
+                    <ul>
+                        <li>
+                            <strong>Pleasing pivots inward</strong>
+                            &ldquo;Pleasing Yourself&rdquo; launched July 2025 &mdash; a sexual wellness line with a confessional-style pop-up in NYC. The trajectory: external joy &rarr; private ritual &rarr; intimate self-care.
+                        </li>
+                        <li>
+                            <strong>New album signals return</strong>
+                            <em>Kiss All the Time. Disco, Occasionally.</em> drops March 6, 2026. First single &ldquo;Aperture&rdquo; performed live at the 2026 BRIT Awards after a 3-year absence.
+                        </li>
+                        <li>
+                            <strong>Fashion evolution</strong>
+                            BRIT Awards look: oversized Chanel pinstripe, mint shirt. The maximalism is maturing &mdash; more structured, still fluid.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="trend-col">
+                    <h3>Macro Winds</h3>
+                    <ul>
+                        <li>
+                            <strong>&ldquo;Past Reveals Future&rdquo;</strong>
+                            Nostalgia not as retreat but as raw material for transformation. Vintage forms made uncanny.
+                        </li>
+                        <li>
+                            <strong>The physical world leans human</strong>
+                            As digital spaces get cleaner and AI-generated, physical objects swing toward handmade marks, tactile imperfection, analog warmth.
+                        </li>
+                        <li>
+                            <strong>Surrealism goes domestic</strong>
+                            No longer confined to galleries &mdash; surrealist logic enters tableware, candle design, furniture, and textiles at commercial scale.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tension-box">
+                <p>Harry Styles&rsquo; Pleasing brand is moving from public joy to private ritual at the exact moment the design world is swinging from sterile minimalism to surreal, tactile maximalism &mdash; creating a collision between <strong>&ldquo;intimate domestic ceremony&rdquo;</strong> and <strong>&ldquo;objects that feel alive and in transformation.&rdquo;</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ PHASE 2: THE EDIT SCAN ═══ -->
+    <section class="edit-section">
+        <div class="container--wide fade-in">
+            <span class="phase-tag">Phase 2</span>
+            <h2 class="section-title">The &ldquo;Edit&rdquo; Scan</h2>
+            <div class="divider"></div>
+            <div class="movement-badge">Domestic Surrealism &nbsp;&#12304;&#29983;&#27963;&#36229;&#29694;&#23455;&#20027;&#32681;&#12305;</div>
+
+            <div class="filter-grid">
+                <div class="filter-card">
+                    <h3>Voo Store Filter &mdash; Raw &times; Refined</h3>
+                    <p>Styles reads as &ldquo;pure refined&rdquo; on the surface &mdash; Gucci campaigns, polished pop stardom. But beneath it: the gender fluidity that still provokes, the sexual wellness pivot, the 70s maximalism that is inherently unruly. For home objects this means: vessels clearly touched by human hands &mdash; drip marks left intact, glaze pooling in valleys &mdash; existing in spaces of considered composition. Found in a Provence flea market, placed on a London shelf with absolute certainty.</p>
+                </div>
+                <div class="filter-card">
+                    <h3>TSUTAYA Filter &mdash; Lifestyle Proposal</h3>
+                    <p>These are not &ldquo;candles&rdquo; or &ldquo;plates.&rdquo; They are a proposal for how to inhabit domestic space as a form of self-expression. <em>Harry&rsquo;s House</em> already coded home-as-identity. The organizational logic is not by category but by <strong>emotional scenario</strong> &mdash; objects grouped by mood, not function. A candle next to a linen next to a ceramic vessel, because they all belong to &ldquo;The Dinner You Cook Alone on Purpose.&rdquo;</p>
+                </div>
+                <div class="filter-card">
+                    <h3>Indie Print Filter &mdash; Analog Appreciation</h3>
+                    <p>Styles&rsquo; maximalism is inherently analog &mdash; vinyl records, hand-embroidered suits, rings stacked imperfectly. This brand should feel like a hand-printed Risograph zine of domestic life: color registration slightly off, paper stock you can feel, photography that looks like someone&rsquo;s actual kitchen at 2 AM. Typography references 70s psychedelic poster art, processed through a contemporary indie press.</p>
+                </div>
+            </div>
+
+            <div class="visual-mood">
+                <p>A kitchen counter in late-afternoon light, honey-gold and slightly overexposed. A ceramic vessel shaped like a soft, almost-melting form holds a candle &mdash; the wax has dripped down one side, hardening into a new geography. Behind it, a linen napkin in an impossible shade of lilac, creased but never folded. A single fig on a hand-thrown plate that is slightly oval, not round. A ring has been left beside the plate, catching light. Nothing matches. Everything belongs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ PHASE 3: BLUEPRINT ═══ -->
+
+    <!-- ── 1. BRAND NAME ── -->
+    <section class="blueprint-section">
+        <div class="container fade-in">
+            <span class="phase-tag">Phase 3 &mdash; The Blueprint</span>
+            <h2 class="section-title">Brand Concept</h2>
+            <div class="divider"></div>
+
+            <div class="blueprint-block">
+                <div class="blueprint-number">01</div>
+                <div class="blueprint-heading">Brand Name &amp; Core Logic</div>
+                <div class="blueprint-sub">The Foundation</div>
+
+                <div class="brand-name-display">
+                    <h2>FONDRE</h2>
+                    <p class="etymology">French: &ldquo;to melt&rdquo; &mdash; as in wax, as in boundaries, as in the dissolution of the rigid into the soft</p>
+                </div>
+
+                <div class="core-statement-block">
+                    <blockquote>&ldquo;Objects that remember being something else.&rdquo;</blockquote>
+                </div>
+
+                <p class="blueprint-text">
+                    Harry Styles is the figure who made fluidity a way of living, not a marketing position. FONDRE extends that fluidity into domestic space: every object exists in a state of transformation. Candles that melt into sculptural forms. Ceramics that look mid-metamorphosis. Linens that drape like fabric dreaming of being water. The brand connects Styles&rsquo; maximalist surrealism to the Maison &amp; Objet 2026 &ldquo;Metamorphosis&rdquo; current, filtered through the analog warmth of Global Indie living. It is not a home goods line &mdash; it is a <em>domestic practice</em>.
+                </p>
+            </div>
+
+            <!-- ── 2. HERO PRODUCT ── -->
+            <div class="blueprint-block">
+                <div class="blueprint-number">02</div>
+                <div class="blueprint-heading">Hero Product</div>
+                <div class="blueprint-sub">&ldquo;S&eacute;ance&rdquo; &mdash; 4-Wick Sculptural Candle in Hand-Thrown Stoneware</div>
+
+                <div class="product-detail-grid">
+                    <div class="product-detail">
+                        <h4>Vessel</h4>
+                        <p>Hand-thrown stoneware by a rotating roster of independent ceramicists, each production run credited by name. Every vessel is intentionally asymmetrical: one wall thicker than the other, glaze pooling in unpredictable valleys, the base bearing the visible thumbprint of the maker. Surface texture alternates between matte and glossy where the glaze broke during kiln firing &mdash; a record of heat and chance.</p>
+                    </div>
+                    <div class="product-detail">
+                        <h4>Wax</h4>
+                        <p>A proprietary blend of rapeseed and coconut wax, hand-poured in chromatic layers &mdash; lilac gives way to terracotta gives way to cream. The wax is engineered to melt <em>over</em> the vessel&rsquo;s edge, cascading down and hardening into an evolving topography. After the candle is spent, the vessel and its frozen wax rivers become a permanent sculptural object. No two are alike. The destruction <em>is</em> the design.</p>
+                    </div>
+                    <div class="product-detail">
+                        <h4>Packaging</h4>
+                        <p>Wrapped in unbleached cotton muslin (reusable as a napkin &mdash; nothing is single-use), tied with waxed cotton cord. The label is letterpress-printed on handmade paper with visible fiber inclusions, type in a hand-drawn serif referencing 1970s psychedelic poster art &mdash; slightly off-registration, as if the ink is still drying. On the reverse: <em>&ldquo;This object will not look the same tomorrow.&rdquo;</em></p>
+                    </div>
+                    <div class="product-detail">
+                        <h4>Design Philosophy</h4>
+                        <p>The S&eacute;ance candle is not consumed &mdash; it is transformed. Each burn is an act of collaboration between the user and the object. The wax rivers record the evenings they witnessed: how long you sat, which direction the air moved, whether you were alone. It is a diary written in rapeseed and stoneware.</p>
+                    </div>
+                </div>
+
+                <div class="scent-profile">
+                    <h4>&ldquo;Pressed Flower Library&rdquo;</h4>
+                    <div class="scent-layers">
+                        <div class="scent-layer">
+                            <p class="layer-name">Opening</p>
+                            <p>Torn fig leaf and warm linen &mdash; green and textile, like pressing your face into a sunlit curtain in a room full of plants.</p>
+                        </div>
+                        <div class="scent-layer">
+                            <p class="layer-name">Heart</p>
+                            <p>Beeswax and crushed violet stem &mdash; not sweet, almost vegetal. The smell of something growing in a room where someone has been reading.</p>
+                        </div>
+                        <div class="scent-layer">
+                            <p class="layer-name">Base</p>
+                            <p>Aged oak and a ghost of tobacco &mdash; like opening a drawer in a house you&rsquo;ve never visited but somehow recognize.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 3. RITUAL ── -->
+    <section class="ritual-section">
+        <div class="container fade-in">
+            <div class="blueprint-number" style="color: rgba(245,240,232,0.15);">03</div>
+            <div class="blueprint-heading" style="color: var(--cream); margin-bottom: 0.5rem;">Core Ritual</div>
+            <div class="blueprint-sub" style="color: var(--honey); margin-bottom: 3rem;">The Behavioral Catalyst</div>
+
+            <h3 class="ritual-name">&#12304; The Dinner for One, Set for Two &#12305;</h3>
+
+            <p class="ritual-text">
+                FONDRE&rsquo;s central ritual is the meal you cook alone &mdash; not from loneliness, but from devotion to the act itself. You set the table with two FONDRE plates: one for eating, one for the bread you tore by hand. You light the S&eacute;ance candle not for ambiance but to <em>watch it transform</em> &mdash; the wax finding its path over the vessel&rsquo;s lip, building a new form while you eat. The linen napkin is draped across the table&rsquo;s edge, never folded into a shape. The music is playing but you&rsquo;ve stopped noticing &mdash; the room itself has become the experience.
+            </p>
+            <p class="ritual-text">
+                This is domestic surrealism: the everyday made strange and beautiful through intention. It is not &ldquo;self-care&rdquo; (a word FONDRE never uses). It is the practice of treating your own domestic life as an artwork in progress.
+            </p>
+
+            <div class="ritual-meta">
+                <div class="ritual-meta-item">
+                    <p class="meta-label">Time</p>
+                    <p>Evening. After everything else is done.</p>
+                </div>
+                <div class="ritual-meta-item">
+                    <p class="meta-label">Sound</p>
+                    <p>Whatever was playing when you forgot to pay attention.</p>
+                </div>
+                <div class="ritual-meta-item">
+                    <p class="meta-label">Duration</p>
+                    <p>However long the wax takes to reach the table.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 4. MARKET GAP ── -->
+    <section class="gap-section">
+        <div class="container--wide fade-in">
+            <div class="blueprint-number">04</div>
+            <div class="blueprint-heading">Market Gap</div>
+            <div class="blueprint-sub">The Unoccupied Niche</div>
+
+            <p class="blueprint-text">
+                Celebrity home goods exist in two exhausted modes. <strong>Mode A:</strong> the mass-market tasteful neutral &mdash; candles that smell &ldquo;nice&rdquo; and disappear into any room, empires of curated beige. <strong>Mode B:</strong> the ironic hypebeast object &mdash; conceptual furniture, things you buy to photograph and never use. The serious end of artisanal home objects has zero celebrity bridge &mdash; it speaks to the design world exclusively.
+            </p>
+            <p class="blueprint-text" style="margin-top: 1.5rem;">
+                Meanwhile, Styles&rsquo; own Pleasing brand has pivoted to sexual wellness, leaving the &ldquo;domestic joy&rdquo; territory he explored with <em>Harry&rsquo;s House</em> entirely unoccupied. The album was a cultural signal that millions received &mdash; home as identity, home as creative space &mdash; and no product followed it into that territory.
+            </p>
+
+            <div class="gap-spectrum">
+                <div class="gap-pole">
+                    <p class="pole-name">Fornasetti</p>
+                    <p class="pole-desc">Surreal but untouchable</p>
+                </div>
+                <div class="gap-center">
+                    <p class="center-name">FONDRE</p>
+                    <p class="center-desc">Surrealism you actually use</p>
+                </div>
+                <div class="gap-pole">
+                    <p class="pole-name">Urban Outfitters</p>
+                    <p class="pole-desc">Surreal but disposable</p>
+                </div>
+            </div>
+
+            <p class="blueprint-text">
+                <strong>Why Harry Styles:</strong> He is the only living celebrity who has simultaneously earned credibility in high fashion, indie culture, and mass emotional intimacy. His gender fluidity is not a marketing angle &mdash; it is the <em>reason</em> these objects reject gendered design language. And his album title already declared the thesis: the house is the creative project.
+            </p>
+        </div>
+    </section>
+
+    <!-- ── 5. MAGAZINE SPREAD ── -->
+    <section class="spread-section">
+        <div class="container--wide fade-in">
+            <div class="blueprint-number">05</div>
+            <div class="blueprint-heading">Magazine Spread</div>
+            <div class="blueprint-sub"><em>Num&eacute;ro</em> &mdash; Art Editorial Pages</div>
+            <div class="spread-cover-row fade-in">
+                <div class="spread-cover">
+                    <img src="Harry-Styles-FONDRE-4-5.png" alt="FONDRE Concept Board">
+                    <div class="spread-cover__overlay">
+                        <span class="spread-cover__celebrity">Harry Styles</span>
+                        <span class="spread-cover__brand">FONDRE</span>
+                    </div>
+                </div>
+                <div class="brand-card">
+                    <p class="brand-card__label">Celebrity Brand Strategy Agent &mdash; Case 003</p>
+                    <h2 class="brand-card__name">FONDRE</h2>
+                    <p class="brand-card__statement">&ldquo;Objects that remember being something else.&rdquo;</p>
+                    <div class="brand-card__meta">
+                        Harry Styles &times; Home &amp; Lifestyle<br>
+                        Domestic Surrealism &mdash; Global Indie<br>
+                        March 2026
+                    </div>
+                </div>
+            </div>
+            <p class="blueprint-text" style="margin-bottom: 1rem;">
+                <strong>Photography Direction:</strong> Shot by Harley Weir or Tyler Mitchell. Conceptual domestic intimacy &mdash; every image feels like walking into someone&rsquo;s private evening, uninvited but welcomed.
+            </p>
+        </div>
+
+        <div class="spread-mock">
+            <div class="spread-left">
+                <p>
+                    A domestic still life, almost Baroque in density but contemporary in light. A FONDRE S&eacute;ance candle mid-burn on a vintage marble side table, its wax rivers frozen mid-cascade down one carved leg. Behind it, a loose stack of linen napkins in mismatched surrealist pastels &mdash; lilac, celadon, a pink that&rsquo;s almost the color of skin. The light is late-afternoon, honey-gold, pouring from a window outside the frame. A single hand enters from the left edge &mdash; rings on every finger, nails painted an imperfect lavender &mdash; reaching for a ceramic cup that is slightly too large, slightly too organic in form, to be merely functional.
+                </p>
+            </div>
+            <div class="spread-right">
+                <p class="spread-quote">&ldquo;Every evening is a s&eacute;ance with who you were this morning.&rdquo;</p>
+                <div class="spread-brand">
+                    FONDRE
+                    <span>Objects in Transformation</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="spread-direction">
+            <h4>Overall Direction</h4>
+            <p><em>Num&eacute;ro</em>&rsquo;s art-editorial register &mdash; conceptual, slightly unsettling in its beauty. Nothing is staged to look &ldquo;livable.&rdquo; Everything is staged to look <em>felt</em>.</p>
+        </div>
+    </section>
+
+    <!-- ── 6. RETAIL SPACE ── -->
+    <section class="retail-section">
+        <div class="container--wide fade-in">
+            <div class="blueprint-number">06</div>
+            <div class="blueprint-heading">Retail Space Concept</div>
+            <div class="blueprint-sub">&ldquo;The Living Room That Isn&rsquo;t Yours&rdquo;</div>
+
+            <p class="blueprint-text">
+                <strong>Location:</strong> A former florist&rsquo;s shop in London&rsquo;s Marylebone, or a ground-floor space in Shimokitazawa, Tokyo &mdash; chosen for the neighborhood&rsquo;s secondhand/indie energy over Daikanyama&rsquo;s curated polish.
+            </p>
+
+            <div class="retail-features">
+                <div class="retail-feature">
+                    <h4>Space &amp; Materials</h4>
+                    <p>Walls washed in diluted terracotta pigment, applied unevenly by hand &mdash; deliberately imperfect, like a watercolor that stopped drying mid-stroke. The floor is original tile, unrestored. Shelving is a mix of reclaimed oak planks and bent brass rods &mdash; nothing is level, everything is intentional.</p>
+                </div>
+                <div class="retail-feature">
+                    <h4>Organization Logic</h4>
+                    <p>Products are NOT organized by category. Candles sit next to linens next to ceramics, arranged by <strong>mood vignettes</strong>. One shelf is &ldquo;The Morning After a Good Conversation.&rdquo; Another is &ldquo;The Afternoon You Cancelled Everything.&rdquo; Visitors navigate emotional states, not product SKUs.</p>
+                </div>
+                <div class="retail-feature">
+                    <h4>Central Installation</h4>
+                    <p>A table permanently set as &ldquo;The Dinner for One, Set for Two.&rdquo; Two plates, two linen napkins in clashing pastels, a S&eacute;ance candle always burning. The wax accumulates over the residency&rsquo;s life &mdash; by the final week, candle and table have merged into a single sculptural object. Visitors are invited to sit. No one is asked to buy.</p>
+                </div>
+                <div class="retail-feature">
+                    <h4>Atmosphere</h4>
+                    <p>The space is fragranced with &ldquo;Pressed Flower Library&rdquo; at all times &mdash; low diffusion, never overpowering. Visitors smell it on their coat when they leave. The scent becomes the memory of the visit.</p>
+                </div>
+            </div>
+
+            <div class="signature-detail">
+                <p>A wall-mounted <strong>&ldquo;Melt Clock&rdquo;</strong> &mdash; a large ceramic clock face where the numerals have been hand-sculpted to appear softening and dripping. The clock runs. It is set to the wrong time on purpose &mdash; the hour of your last good meal alone, whatever that was.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SUMMARY ═══ -->
+    <section class="summary-section">
+        <div class="container fade-in">
+            <span class="phase-tag">Summary</span>
+            <h2 class="section-title">Brand Architecture</h2>
+
+            <table class="summary-table">
+                <tr>
+                    <td>Aesthetic Movement</td>
+                    <td>Domestic Surrealism</td>
+                </tr>
+                <tr>
+                    <td>Tension</td>
+                    <td>Maximalist warmth &times; Surrealist strangeness</td>
+                </tr>
+                <tr>
+                    <td>Material Signature</td>
+                    <td>Hand-thrown stoneware, rapeseed wax, unbleached muslin, bent brass</td>
+                </tr>
+                <tr>
+                    <td>Emotional Territory</td>
+                    <td>The private ceremony of daily life &mdash; cooking, setting a table, watching wax melt</td>
+                </tr>
+                <tr>
+                    <td>Competitive Position</td>
+                    <td>Between Fornasetti (untouchable surrealism) and Aesop (livable minimalism)</td>
+                </tr>
+                <tr>
+                    <td>Cultural Moment</td>
+                    <td>Post-<em>Harry&rsquo;s House</em>, post-Pleasing pivot, mid-maximalism resurgence</td>
+                </tr>
+                <tr>
+                    <td>One-Line Pitch</td>
+                    <td><em>The home goods line for people who think setting a table is a creative act.</em></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer">
+        <p>
+            Case generated by Celebrity Brand Strategy Agent v3.0<br>
+            Phase 1.5 Live Trend Scan Active &bull; Trend Data Sourced March 2026<br>
+            Curational Engine: Voo Store &bull; TSUTAYA Books &bull; doyouread.me? &bull; Num&eacute;ro
+        </p>
+    </footer>
+
+    <script>
+        // Intersection Observer for fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -60px 0px'
+        });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
