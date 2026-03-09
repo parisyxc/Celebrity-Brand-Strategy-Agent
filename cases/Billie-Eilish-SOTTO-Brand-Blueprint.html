@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOTTO — Brand Blueprint</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --silver: #B0BEC5;
+            --silver-glow: rgba(176, 190, 197, 0.12);
+            --deep-blue: #1A237E;
+            --deep-blue-glow: rgba(26, 35, 126, 0.2);
+            --ice: #90CAF9;
+            --ice-dim: rgba(144, 202, 249, 0.6);
+            --smoke: #546E7A;
+            --charcoal: #37474F;
+            --black: #050508;
+            --black-soft: #0A0A10;
+            --black-card: #0F0F18;
+            --black-border: #1A1A2A;
+            --cream: #E0E0E0;
+            --cream-dim: rgba(224, 224, 224, 0.75);
+            --cream-muted: rgba(224, 224, 224, 0.45);
+            --cream-ghost: rgba(224, 224, 224, 0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            background: var(--black);
+            color: var(--cream);
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--black);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40vw;
+            height: 40vw;
+            border-radius: 50%;
+            background: radial-gradient(ellipse, var(--deep-blue-glow) 0%, transparent 70%);
+            animation: pulse 10s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 15%;
+            right: 25%;
+            width: 25vw;
+            height: 25vw;
+            border-radius: 50%;
+            background: radial-gradient(ellipse, var(--silver-glow) 0%, transparent 70%);
+            animation: pulse 14s ease-in-out infinite reverse;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.08); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .hero-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--silver);
+            margin-bottom: 3rem;
+        }
+
+        .hero-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(4rem, 12vw, 10rem);
+            letter-spacing: 0.15em;
+            line-height: 0.9;
+            color: var(--cream);
+            margin-bottom: 2rem;
+        }
+
+        .hero-statement {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--cream-muted);
+            max-width: 520px;
+            margin: 0 auto 3.5rem;
+            line-height: 1.5;
+        }
+
+        .hero-meta {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--cream-muted);
+            line-height: 2.2;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .hero-scroll span {
+            display: block;
+            width: 1px;
+            height: 48px;
+            background: var(--silver);
+            margin: 0 auto;
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.8; }
+        }
+
+        /* ─── SECTIONS ─── */
+        section { padding: 8rem 2rem; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .container--wide { max-width: 1100px; margin: 0 auto; }
+
+        .phase-tag {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--silver);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            color: var(--cream);
+        }
+
+        .section-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: 1.2rem;
+            color: var(--cream-muted);
+            margin-bottom: 3rem;
+        }
+
+        .divider {
+            width: 40px;
+            height: 1px;
+            background: var(--silver);
+            margin: 0 0 2rem 0;
+        }
+
+        .body-text {
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: var(--cream-dim);
+            max-width: 720px;
+        }
+
+        .body-text em { color: var(--cream); font-style: italic; }
+        .body-text strong { color: var(--cream); }
+
+        /* ─── PROFILE ─── */
+        .profile-section { background: var(--black-soft); }
+
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--charcoal);
+            margin: 3rem 0;
+            border: 1px solid var(--charcoal);
+        }
+
+        .persona-cell {
+            background: var(--black-soft);
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .persona-cell .label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--silver);
+            margin-bottom: 0.75rem;
+        }
+
+        .persona-cell .value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--cream);
+        }
+
+        .core-values {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--cream);
+            margin-top: 2.5rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--silver);
+        }
+
+        /* ─── TREND BRIEF ─── */
+        .trend-section { background: var(--black); }
+
+        .trend-columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .trend-col h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--ice);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(144, 202, 249, 0.25);
+        }
+
+        .trend-col li {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: var(--cream-dim);
+            margin-bottom: 1.2rem;
+            list-style: none;
+        }
+
+        .trend-col li strong { color: var(--cream); display: block; margin-bottom: 0.2rem; }
+
+        .tension-box {
+            border: 1px solid var(--silver);
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .tension-box::before {
+            content: 'TENSION WORTH EXPLOITING';
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.4em;
+            color: var(--silver);
+            position: absolute;
+            top: -0.4rem;
+            left: 2rem;
+            background: var(--black);
+            padding: 0 0.75rem;
+        }
+
+        .tension-box p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--cream);
+        }
+
+        /* ─── EDIT SCAN ─── */
+        .edit-section { background: var(--black-soft); }
+
+        .movement-badge {
+            display: inline-block;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 0.6rem 1.4rem;
+            border: 1px solid var(--silver);
+            color: var(--silver);
+            margin-bottom: 3rem;
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .filter-card {
+            padding: 2rem;
+            background: var(--black-card);
+            border: 1px solid var(--black-border);
+        }
+
+        .filter-card h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--silver);
+            margin-bottom: 1.25rem;
+        }
+
+        .filter-card p { font-size: 0.85rem; line-height: 1.75; color: var(--cream-dim); }
+
+        .visual-mood {
+            padding: 3rem;
+            background: var(--black-card);
+            border: 1px solid var(--silver);
+            position: relative;
+            margin-top: 2rem;
+        }
+
+        .visual-mood::before {
+            content: 'VISUAL MOOD';
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.4em;
+            color: var(--silver);
+            position: absolute;
+            top: -0.4rem;
+            left: 2.5rem;
+            background: var(--black-soft);
+            padding: 0 0.75rem;
+        }
+
+        .visual-mood p {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--cream-dim);
+        }
+
+        /* ─── BLUEPRINT ─── */
+        .blueprint-section { background: var(--black); }
+
+        .blueprint-block {
+            margin-bottom: 5rem;
+            padding-bottom: 5rem;
+            border-bottom: 1px solid var(--black-border);
+        }
+
+        .blueprint-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+        .blueprint-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 4rem;
+            color: var(--silver);
+            opacity: 0.2;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .blueprint-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-size: 1.8rem;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .blueprint-sub {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--silver);
+            margin-bottom: 2rem;
+        }
+
+        /* ─── BRAND NAME DISPLAY ─── */
+        .brand-name-display {
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-bottom: 2.5rem;
+            background: radial-gradient(ellipse at 50% 50%, var(--deep-blue-glow) 0%, transparent 60%);
+        }
+
+        .brand-name-display h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(3rem, 8vw, 6rem);
+            letter-spacing: 0.2em;
+            color: var(--cream);
+            margin-bottom: 1rem;
+        }
+
+        .brand-name-display .etymology {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            color: var(--cream-muted);
+            font-style: italic;
+        }
+
+        .core-statement-block {
+            text-align: center;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .core-statement-block blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            font-style: italic;
+            color: var(--cream);
+        }
+
+        /* ─── PRODUCT DETAILS ─── */
+        .product-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .product-detail {
+            padding: 2rem;
+            background: var(--black-card);
+            border-left: 2px solid var(--silver);
+        }
+
+        .product-detail h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--silver);
+            margin-bottom: 1rem;
+        }
+
+        .product-detail p { font-size: 0.88rem; line-height: 1.8; color: var(--cream-dim); }
+
+        /* ─── SCENT CHIPS ─── */
+        .scent-row {
+            display: flex;
+            gap: 2rem;
+            margin: 2.5rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .scent-chip {
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .scent-chip .chip-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            margin: 0 auto 0.75rem;
+        }
+
+        .scent-chip .chip-name {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.5rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--cream-muted);
+        }
+
+        .chip-3am { background: radial-gradient(circle at 30% 30%, #546E7A, #1A237E); }
+        .chip-almost { background: radial-gradient(circle at 30% 30%, #B0BEC5, #546E7A); }
+        .chip-storm { background: radial-gradient(circle at 30% 30%, #90CAF9, #37474F); }
+
+        /* ─── RITUAL ─── */
+        .ritual-section {
+            background: linear-gradient(180deg, var(--black-soft) 0%, var(--black) 100%);
+            text-align: center;
+        }
+
+        .ritual-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--cream);
+            margin-bottom: 3rem;
+            letter-spacing: 0.05em;
+        }
+
+        .ritual-text {
+            font-size: 0.95rem;
+            line-height: 2;
+            color: var(--cream-dim);
+            max-width: 640px;
+            margin: 0 auto 3rem;
+            text-align: left;
+        }
+
+        .ritual-meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 640px;
+            margin: 0 auto;
+            padding-top: 3rem;
+            border-top: 1px solid var(--black-border);
+        }
+
+        .ritual-meta-item .meta-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--silver);
+            margin-bottom: 0.5rem;
+        }
+
+        .ritual-meta-item p {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--cream-muted);
+        }
+
+        /* ─── GAP SPECTRUM ─── */
+        .gap-section { background: var(--black-soft); }
+
+        .gap-spectrum {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 3rem 0;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        .gap-spectrum::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--cream-ghost), var(--silver), var(--cream-ghost));
+        }
+
+        .gap-pole {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            background: var(--black-soft);
+            padding: 0 1rem;
+        }
+
+        .gap-pole .pole-name {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--cream-muted);
+        }
+
+        .gap-pole .pole-desc {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.8rem;
+            color: var(--cream-muted);
+        }
+
+        .gap-center {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            background: var(--silver);
+            color: var(--black);
+            padding: 1.2rem 2rem;
+        }
+
+        .gap-center .center-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-size: 1.2rem;
+            letter-spacing: 0.08em;
+        }
+
+        .gap-center .center-desc {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.5rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+        }
+
+        /* ─── COVER PHOTO ─── */
+        .spread-cover-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto 3rem;
+        }
+
+        .spread-cover {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+        }
+
+        .spread-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .spread-cover__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(5,5,8,0.7) 0%, rgba(5,5,8,0.2) 35%, transparent 55%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+            padding-bottom: 3rem;
+        }
+
+        .spread-cover__celebrity {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--silver);
+            margin-bottom: 0.6rem;
+        }
+
+        .spread-cover__brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            letter-spacing: 0.15em;
+            color: var(--cream);
+            line-height: 1;
+        }
+
+        /* ─── BRAND CARD ─── */
+        .brand-card {
+            aspect-ratio: 4 / 5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 3rem 2rem;
+            background: radial-gradient(ellipse at 40% 30%, var(--deep-blue-glow) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 70%, var(--silver-glow) 0%, transparent 50%),
+                        var(--black);
+            overflow: hidden;
+        }
+
+        .brand-card__label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--silver);
+            margin-bottom: 2.5rem;
+        }
+
+        .brand-card__name {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            letter-spacing: 0.15em;
+            line-height: 0.9;
+            color: var(--cream);
+            margin-bottom: 1.5rem;
+        }
+
+        .brand-card__statement {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: clamp(0.95rem, 2vw, 1.25rem);
+            color: var(--cream-muted);
+            max-width: 85%;
+            margin: 0 auto 2.5rem;
+            line-height: 1.5;
+        }
+
+        .brand-card__meta {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.5rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--cream-muted);
+            line-height: 2.2;
+        }
+
+        @media (max-width: 768px) {
+            .spread-cover-row { grid-template-columns: 1fr; max-width: 500px; }
+        }
+
+        /* ─── SPREAD ─── */
+        .spread-section { background: var(--black); padding-bottom: 0; }
+
+        .spread-mock {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 70vh;
+            margin-top: 3rem;
+        }
+
+        .spread-left {
+            background: linear-gradient(160deg, var(--black-card) 0%, var(--deep-blue-glow) 40%, rgba(176,190,197,0.05) 100%);
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .spread-left p {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: var(--cream-dim);
+        }
+
+        .spread-right {
+            background: var(--charcoal);
+            color: var(--cream);
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .spread-right .spread-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            line-height: 1.5;
+            color: var(--cream);
+        }
+
+        .spread-right .spread-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 1.2rem;
+            letter-spacing: 0.15em;
+            color: var(--cream);
+        }
+
+        .spread-right .spread-brand span {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            display: block;
+            margin-top: 0.3rem;
+            opacity: 0.5;
+        }
+
+        /* ─── RETAIL ─── */
+        .retail-section { background: var(--black-soft); }
+
+        .retail-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .retail-feature h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--silver);
+            margin-bottom: 1rem;
+        }
+
+        .retail-feature p { font-size: 0.88rem; line-height: 1.8; color: var(--cream-dim); }
+
+        .signature-detail {
+            margin-top: 4rem;
+            padding: 3rem;
+            background: var(--black-card);
+            border: 1px solid var(--silver);
+            position: relative;
+        }
+
+        .signature-detail::before {
+            content: 'SIGNATURE DETAIL';
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.4em;
+            color: var(--silver);
+            position: absolute;
+            top: -0.4rem;
+            left: 2.5rem;
+            background: var(--black-soft);
+            padding: 0 0.75rem;
+        }
+
+        .signature-detail p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--cream-dim);
+        }
+
+        /* ─── SUMMARY ─── */
+        .summary-section { background: var(--black); }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 3rem;
+        }
+
+        .summary-table tr { border-bottom: 1px solid var(--black-border); }
+        .summary-table td { padding: 1.3rem 0; vertical-align: top; }
+
+        .summary-table td:first-child {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--silver);
+            width: 200px;
+            padding-right: 2rem;
+        }
+
+        .summary-table td:last-child {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--cream-dim);
+        }
+
+        .summary-table td:last-child em { color: var(--cream); }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            padding: 3rem 2rem;
+            background: var(--black);
+            border-top: 1px solid var(--black-border);
+            text-align: center;
+        }
+
+        .footer p {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--cream-ghost);
+            line-height: 2;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            section { padding: 5rem 1.5rem; }
+            .persona-grid, .trend-columns, .filter-grid,
+            .product-detail-grid, .ritual-meta, .retail-features { grid-template-columns: 1fr; }
+            .gap-spectrum { flex-direction: column; gap: 1.5rem; }
+            .gap-spectrum::before { display: none; }
+            .spread-mock { grid-template-columns: 1fr; }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ─── NAV ─── */
+        .back-nav {
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+            z-index: 100;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--cream-muted);
+            text-decoration: none;
+            padding: 0.5rem 0.8rem;
+            background: rgba(5, 5, 8, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--black-border);
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .back-nav:hover {
+            color: var(--silver);
+            border-color: var(--silver);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../index.html" class="back-nav">&larr; Gallery</a>
+
+    <header class="hero">
+        <div class="hero-content">
+            <p class="hero-label">Celebrity Brand Strategy Agent &mdash; Case 005</p>
+            <h1 class="hero-brand">SOTTO</h1>
+            <p class="hero-statement">&ldquo;The architecture beneath the room you&rsquo;re in.&rdquo;</p>
+            <div class="hero-meta">
+                Billie Eilish &times; Haptic Scent-Scapes<br>
+                Phantom Architecture &mdash; Berlin Raw &times; Tokyo Refined<br>
+                March 2026
+            </div>
+        </div>
+        <div class="hero-scroll"><span></span></div>
+    </header>
+
+    <section class="profile-section">
+        <div class="container fade-in">
+            <span class="phase-tag">Phase 1</span>
+            <h2 class="section-title">Deep Profile</h2>
+            <div class="divider"></div>
+            <div class="persona-grid">
+                <div class="persona-cell">
+                    <p class="label">Energy</p>
+                    <p class="value">Whispered</p>
+                </div>
+                <div class="persona-cell">
+                    <p class="label">Register</p>
+                    <p class="value">Nocturnal</p>
+                </div>
+                <div class="persona-cell">
+                    <p class="label">Mode</p>
+                    <p class="value">Synesthetic</p>
+                </div>
+            </div>
+            <p class="body-text">Billie Eilish is a figure built on radical self-preservation &mdash; the insistence that the most difficult part is <em>holding on to yourself</em>. Her aesthetic lives in heavy shadows, ASMR-minimal soundscapes, and a dark intimate palette of deep blues, blacks, and silvers. She stands for the right to evolve, hide, and redefine one&rsquo;s identity away from the public gaze.</p>
+            <p class="core-values">Her documented obsession with smell is not a marketing angle &mdash; it is a genuine perceptual framework. She experiences music through scent, space through texture, emotion through temperature. <em>&ldquo;I love scents that have layers that you can&rsquo;t quite name right away.&rdquo;</em></p>
+        </div>
+    </section>
+
+    <section class="trend-section">
+        <div class="container--wide fade-in">
+            <span class="phase-tag">Phase 1.5 &mdash; Live Trend Scan</span>
+            <h2 class="section-title">Trend Brief</h2>
+            <p class="section-subtitle">Cultural signals pulled March 2026</p>
+            <div class="trend-columns">
+                <div class="trend-col">
+                    <h3>Category Pulse</h3>
+                    <ul>
+                        <li><strong>Dynamic scent arrives</strong>Deepscent&rsquo;s AI makes scent contextual and adaptive &mdash; tailored to moment, location, and content. Scent becomes a dynamic digital tool alongside light and sound.</li>
+                        <li><strong>Smart diffusers cross into luxury</strong>Est&eacute;e Lauder &times; Exuud delivers molecular burst precision. AromaTech positions diffusers as design objects. Category shifts from &ldquo;air freshener&rdquo; to &ldquo;spatial instrument.&rdquo;</li>
+                        <li><strong>Death of the signature scent</strong>Marie Claire declares 2026 the year the fixed fragrance dies &mdash; replaced by layered, evolving, contextual, unnamed compositions.</li>
+                    </ul>
+                </div>
+                <div class="trend-col">
+                    <h3>Celebrity Current Moment</h3>
+                    <ul>
+                        <li><strong>Your Turn II (Nov 2025)</strong>Woody-fruity composition with &ldquo;layers you can&rsquo;t quite name right away&rdquo; &mdash; warm, smoky, mysterious. Androgynous, deliberately illegible.</li>
+                        <li><strong>James Cameron 3D concert film</strong>Co-directed by Eilish, releasing March 2026. Investment in spatial immersion as art form &mdash; the audience feels <em>inside</em> the performance.</li>
+                        <li><strong>Genderless sensory philosophy</strong>Fragrance designed for everyone. Not gendered product &mdash; sensory intervention.</li>
+                    </ul>
+                </div>
+                <div class="trend-col">
+                    <h3>Macro Winds</h3>
+                    <ul>
+                        <li><strong>Multi-sensory = 70% brand recall</strong>Engaging touch, sound, scent, and taste simultaneously creates environments that stir emotion. Science validates what Eilish intuits.</li>
+                        <li><strong>AI co-creates fragrance</strong>Givaudan&rsquo;s Myrissi and digital odour mapping make scent design programmable and responsive.</li>
+                        <li><strong>Digital scent market doubles</strong>$1.35B (2025) &rarr; $2.91B by 2033. The category is real infrastructure, not speculation.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tension-box">
+                <p>Billie Eilish already makes fragrances with &ldquo;layers you can&rsquo;t quite name&rdquo; and music that architectures invisible rooms &mdash; and the technology now exists to make scent dynamic, responsive, and synced to content. The collision: her whisper-pop intimacy meets an emerging sensory infrastructure that could make a room <em>smell the way her music sounds</em>.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="edit-section">
+        <div class="container--wide fade-in">
+            <span class="phase-tag">Phase 2</span>
+            <h2 class="section-title">The &ldquo;Edit&rdquo; Scan</h2>
+            <div class="divider"></div>
+            <div class="movement-badge">Phantom Architecture &nbsp;&#12304;&#24187;&#24433;&#24314;&#31689;&#12305;</div>
+            <div class="filter-grid">
+                <div class="filter-card">
+                    <h3>Voo Store &mdash; Raw &times; Refined</h3>
+                    <p>The exterior must feel like an object pulled from a Berlin warehouse &mdash; matte black anodized aluminum, visible machining marks, a weight that anchors it to a surface. But the interior technology is precision-engineered: nebulizing chambers that atomize scent at the molecular level, Bluetooth sync that maps fragrance release to audio waveforms in real time. The outside says <em>found in a disused factory</em>. The inside says <em>designed by someone who hears in color</em>.</p>
+                </div>
+                <div class="filter-card">
+                    <h3>TSUTAYA &mdash; Lifestyle Proposal</h3>
+                    <p>This is not a &ldquo;diffuser.&rdquo; It is a proposal for how a room <em>becomes</em>. Scent cartridges are labeled by state, not fragrance name: &ldquo;3 AM and the Screen Just Went Dark,&rdquo; &ldquo;The Conversation You Almost Had.&rdquo; Each cartridge evolves over 45 minutes, shifting from top to base like a track moves from verse to coda. You don&rsquo;t choose a scent &mdash; you choose a duration of feeling.</p>
+                </div>
+                <div class="filter-card">
+                    <h3>Indie Print &mdash; Analog Appreciation</h3>
+                    <p>Every cartridge contains one &ldquo;analog note&rdquo; &mdash; a raw, unprocessed botanical (unrefined vetiver root, actual wood smoke residue, crushed wet earth) sitting beneath the molecular layers like a hand-drawn line beneath a digital grid. Packaging uses matte uncoated black card with blind embossing &mdash; text you feel before you read, typography that exists in shadow.</p>
+                </div>
+            </div>
+            <div class="visual-mood">
+                <p>A room you can barely see. The only light source is the faint blue-silver glow of a diffuser sitting on a raw concrete surface &mdash; the aluminum cylinder catching light like a monolith in miniature. Mist rises from its aperture, not white but barely visible, a distortion in the air like heat rising from asphalt. Behind it, deep shadow. A bed is suggested &mdash; the edge of a dark linen duvet, a pillow dented by the shape of someone who just left. The photograph smells of smoke and wet stone and something sweet you cannot name.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="blueprint-section">
+        <div class="container fade-in">
+            <span class="phase-tag">Phase 3 &mdash; The Blueprint</span>
+            <h2 class="section-title">Brand Concept</h2>
+            <div class="divider"></div>
+
+            <div class="blueprint-block">
+                <div class="blueprint-number">01</div>
+                <div class="blueprint-heading">Brand Name &amp; Core Logic</div>
+                <div class="blueprint-sub">The Foundation</div>
+                <div class="brand-name-display">
+                    <h2>SOTTO</h2>
+                    <p class="etymology">Italian: &ldquo;under / beneath&rdquo; &mdash; as in sotto voce, the whispered voice</p>
+                </div>
+                <div class="core-statement-block">
+                    <blockquote>&ldquo;The architecture beneath the room you&rsquo;re in.&rdquo;</blockquote>
+                </div>
+                <p class="body-text">Everything about Billie Eilish&rsquo;s aesthetic lives <em>beneath</em> the surface: the whispered vocal beneath the stadium sound system, the unnamed scent layers beneath the legible top note, the identity preserved beneath the public gaze. SOTTO is the brand for the layer you feel before you understand &mdash; a music-synced diffuser that transforms audio waveforms into olfactory choreography. The room itself becomes the instrument. You don&rsquo;t listen to the music &mdash; you <strong>inhabit</strong> it.</p>
+            </div>
+
+            <div class="blueprint-block">
+                <div class="blueprint-number">02</div>
+                <div class="blueprint-heading">Hero Product</div>
+                <div class="blueprint-sub">&ldquo;Monolith&rdquo; &mdash; Music-Synced Nebulizing Diffuser</div>
+
+                <div class="scent-row">
+                    <div class="scent-chip">
+                        <div class="chip-circle chip-3am"></div>
+                        <p class="chip-name">3 AM</p>
+                    </div>
+                    <div class="scent-chip">
+                        <div class="chip-circle chip-almost"></div>
+                        <p class="chip-name">Almost</p>
+                    </div>
+                    <div class="scent-chip">
+                        <div class="chip-circle chip-storm"></div>
+                        <p class="chip-name">Morning Storm</p>
+                    </div>
+                </div>
+
+                <div class="product-detail-grid">
+                    <div class="product-detail">
+                        <h4>Body</h4>
+                        <p>Matte black anodized aluminum cylinder, 180mm &times; 65mm &mdash; proportions of a microphone, weight of an anchor. Bead-blasted surface between silk and sandpaper. A single vertical strip of smoked borosilicate glass reveals the nebulizing chamber: scent atomized into particles so fine they rise like a rumor.</p>
+                    </div>
+                    <div class="product-detail">
+                        <h4>Technology</h4>
+                        <p>Bluetooth module reads audio signal from any paired source. Maps scent release to frequency, amplitude, and tempo in real time. The diffuser breathes with the music &mdash; exhaling on the downbeat, holding during silence, building through crescendo. No buttons. No screen. The app is the only interface.</p>
+                    </div>
+                    <div class="product-detail">
+                        <h4>Scent Cartridges</h4>
+                        <p><strong>&ldquo;3 AM&rdquo;</strong> &mdash; Cold silver aldehydes &rarr; bruised fig and black tea &rarr; unrefined vetiver with real wood smoke residue.<br><br><strong>&ldquo;Almost&rdquo;</strong> &mdash; Rain on warm concrete &rarr; crushed iris and white musk &rarr; sandalwood and skin accord.<br><br><strong>&ldquo;Morning Storm&rdquo;</strong> &mdash; Ozone and salt &rarr; black currant bud and wet leaves &rarr; damp linen and cedarwood.</p>
+                    </div>
+                    <div class="product-detail">
+                        <h4>Packaging</h4>
+                        <p>Matte black rigid box, soft-touch lamination &mdash; the kind of black that absorbs light. No external text. Brand name blind-embossed on the lid &mdash; you find it by touch. Interior: die-cut cavity lined with charcoal suede. A single card, black on black (text visible only at an angle): <em>&ldquo;This device does not fill a room. It becomes one.&rdquo;</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ritual-section">
+        <div class="container fade-in">
+            <div class="blueprint-number" style="color: rgba(176,190,197,0.12);">03</div>
+            <div class="blueprint-heading" style="margin-bottom: 0.5rem;">Core Ritual</div>
+            <div class="blueprint-sub" style="margin-bottom: 3rem;">The Behavioral Catalyst</div>
+            <h3 class="ritual-name">&#12304; The Hour You Can&rsquo;t Name &#12305;</h3>
+            <p class="ritual-text">It is not 3 AM but it feels like 3 AM. The lights are off. You are not asleep but you are not awake in the way the world requires. You open the SOTTO app. You choose &ldquo;3 AM.&rdquo; You press play on the album. The Monolith begins.</p>
+            <p class="ritual-text">At first you smell nothing. Then &mdash; a metallic coolness at the edge of your breath, like standing near a window you haven&rsquo;t opened yet. As the bass enters, the fig arrives: dark, almost bruised. You close your eyes. The room is no longer a room &mdash; it is a temperature, a pressure, a weight on your chest that feels like company. By the time the vetiver reaches you, smoke-edged and rooted, you have forgotten you are smelling anything. The scent has become the architecture. You are inside the song.</p>
+            <div class="ritual-meta">
+                <div class="ritual-meta-item">
+                    <p class="meta-label">Time</p>
+                    <p>Whenever it feels like 3 AM.</p>
+                </div>
+                <div class="ritual-meta-item">
+                    <p class="meta-label">Sound</p>
+                    <p>Whatever you can&rsquo;t stop listening to.</p>
+                </div>
+                <div class="ritual-meta-item">
+                    <p class="meta-label">Duration</p>
+                    <p>One cartridge cycle. Or until you fall asleep.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gap-section">
+        <div class="container--wide fade-in">
+            <div class="blueprint-number">04</div>
+            <div class="blueprint-heading">Market Gap</div>
+            <div class="blueprint-sub">The Unoccupied Niche</div>
+            <p class="body-text"><strong>Position A:</strong> The Luxury Candle &mdash; Diptyque, Le Labo. Beautiful objects, fixed scents, static experience. The room is singular and unchanging. <strong>Position B:</strong> The Wellness Diffuser &mdash; Vitruvi, Muji. Eucalyptus-for-focus, lavender-for-sleep. Scent reduced to a productivity tool. <strong>Position C:</strong> The Smart Home Gadget &mdash; AromaTech, Pura. Technology-forward but aesthetically anonymous. White plastic shells.</p>
+            <p class="body-text" style="margin-top: 1.5rem;">None of these treat scent as a <em>temporal, responsive, emotionally intelligent medium</em> &mdash; something that breathes with the moment, evolves with the music, and creates rooms that are not decorated but <strong>performed</strong>.</p>
+            <div class="gap-spectrum">
+                <div class="gap-pole">
+                    <p class="pole-name">Diptyque</p>
+                    <p class="pole-desc">Olfactory beauty, zero tech</p>
+                </div>
+                <div class="gap-center">
+                    <p class="center-name">SOTTO</p>
+                    <p class="center-desc">Scent &times; music synchronicity</p>
+                </div>
+                <div class="gap-pole">
+                    <p class="pole-name">AromaTech</p>
+                    <p class="pole-desc">Olfactory tech, zero beauty</p>
+                </div>
+            </div>
+            <p class="body-text"><strong>Why Billie Eilish:</strong> She is the only artist who has simultaneously built a fragrance line (four releases, commercially successful), an immersive spatial practice (the Cameron 3D film, bedroom-pop production that <em>builds rooms</em> from sound), and a philosophy of unnamed sensation. Her audience already experiences her music as a space they enter. SOTTO gives that space a physical address.</p>
+        </div>
+    </section>
+
+    <section class="spread-section">
+        <div class="container--wide fade-in">
+            <div class="blueprint-number">05</div>
+            <div class="blueprint-heading">Magazine Spread</div>
+            <div class="blueprint-sub"><em>032c</em> &mdash; Berlin Avant-Garde</div>
+            <div class="spread-cover-row fade-in">
+                <div class="spread-cover">
+                    <img src="Billie-Eilish-SOTTO-concept-board.png" alt="SOTTO Concept Board">
+                    <div class="spread-cover__overlay">
+                        <span class="spread-cover__celebrity">Billie Eilish</span>
+                        <span class="spread-cover__brand">SOTTO</span>
+                    </div>
+                </div>
+                <div class="brand-card">
+                    <p class="brand-card__label">Celebrity Brand Strategy Agent &mdash; Case 005</p>
+                    <h2 class="brand-card__name">SOTTO</h2>
+                    <p class="brand-card__statement">&ldquo;The architecture beneath the room you&rsquo;re in.&rdquo;</p>
+                    <div class="brand-card__meta">
+                        Billie Eilish &times; Haptic Scent-Scapes<br>
+                        Phantom Architecture &mdash; Berlin Raw &times; Tokyo Refined<br>
+                        March 2026
+                    </div>
+                </div>
+            </div>
+            <p class="body-text">Shot by Harley Weir or Viviane Sassen. Near-total darkness. Images exist at the threshold of visibility &mdash; shapes suggested, surfaces implied.</p>
+        </div>
+        <div class="spread-mock">
+            <div class="spread-left">
+                <p>A near-black frame. In the center-bottom third, the Monolith diffuser on a raw concrete plinth, its smoked glass channel emitting the faintest blue-silver glow &mdash; the only light source. Mist rises from the aperture, barely visible, distorting the air above like a heat shimmer. The concrete extends into shadow in all directions. You cannot see the walls. The room is implied by the scent you cannot smell through a photograph but somehow feel.</p>
+            </div>
+            <div class="spread-right">
+                <p class="spread-quote">&ldquo;The room is the instrument.&rdquo;</p>
+                <div class="spread-brand">
+                    SOTTO
+                    <span>Scent cartridge: &ldquo;3 AM.&rdquo; Duration: 45 minutes.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="retail-section">
+        <div class="container--wide fade-in">
+            <div class="blueprint-number">06</div>
+            <div class="blueprint-heading">Retail Space Concept</div>
+            <div class="blueprint-sub">&ldquo;The Listening Room&rdquo;</div>
+            <p class="body-text"><strong>Location:</strong> A basement space in Kreuzberg, Berlin &mdash; accessed through a plain steel door at street level with no signage. Only a milled aluminum plate engraved with &ldquo;SOTTO&rdquo; at finger height. The descent is part of the experience.</p>
+            <div class="retail-features">
+                <div class="retail-feature">
+                    <h4>Space &amp; Materials</h4>
+                    <p>60 square meters. Walls are raw poured concrete bearing the imprint of wooden formwork. Floor is polished black resin &mdash; reflective enough to double the room&rsquo;s depth, absorbing all sound. Near-zero lighting &mdash; illumination comes only from the diffusers&rsquo; glass channels (blue-silver glow) and a single recessed LED track at floor level.</p>
+                </div>
+                <div class="retail-feature">
+                    <h4>Scent Zones</h4>
+                    <p>Four zones, each defined by a Monolith running a different cartridge. No walls between zones &mdash; the scent itself <em>is</em> the architecture. You cross from &ldquo;3 AM&rdquo; to &ldquo;Almost&rdquo; by walking, and the room changes around you without anything visible moving.</p>
+                </div>
+                <div class="retail-feature">
+                    <h4>Sound</h4>
+                    <p>A continuously evolving ambient mix synced to the active scent zones. Speakers are embedded in the concrete walls. The sound does not come from a direction. It comes from the room.</p>
+                </div>
+                <div class="retail-feature">
+                    <h4>Product Display</h4>
+                    <p>A single 4-meter raw steel shelf at chest height. Each Monolith lit by a focused pinpoint spot &mdash; the only bright light in the space, making each diffuser appear to levitate in darkness. Cartridges arrayed by state, not alphabetically.</p>
+                </div>
+            </div>
+            <div class="signature-detail">
+                <p>At the center of the room, a single Monolith prototype &mdash; the first unit ever produced, non-functional, sealed in a block of transparent resin &mdash; sits on a concrete pedestal at eye height. Its glass channel still contains the residue of the first test cartridge. A small plate reads: <em>&ldquo;Prototype 001. Scent residue: Unnamed.&rdquo;</em> The room smells of it faintly &mdash; or you imagine it does. That uncertainty is the point.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="summary-section">
+        <div class="container fade-in">
+            <span class="phase-tag">Summary</span>
+            <h2 class="section-title">Brand Architecture</h2>
+            <table class="summary-table">
+                <tr><td>Aesthetic Movement</td><td>Phantom Architecture</td></tr>
+                <tr><td>Tension</td><td>Industrial materiality &times; Invisible sensory precision; Darkness as absence &times; Darkness as fullness</td></tr>
+                <tr><td>Material Signature</td><td>Matte black anodized aluminum, smoked borosilicate glass, raw concrete, charcoal suede, blind-embossed black card</td></tr>
+                <tr><td>Emotional Territory</td><td>The hour between consciousness and its opposite &mdash; making a room match the inside of your head</td></tr>
+                <tr><td>Competitive Position</td><td>Between Diptyque (olfactory beauty, zero tech) and AromaTech (olfactory tech, zero beauty)</td></tr>
+                <tr><td>Cultural Moment</td><td>Post-&ldquo;Your Turn II,&rdquo; pre-Cameron 3D film, the death of the signature scent, the rise of dynamic digital fragrance</td></tr>
+                <tr><td>One-Line Pitch</td><td><em>The first home fragrance that understands the room and the playlist are the same experience.</em></td></tr>
+            </table>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>
+            Case generated by Celebrity Brand Strategy Agent v3.0<br>
+            Phase 1.5 Live Trend Scan Active &bull; Trend Data Sourced March 2026<br>
+            Curational Engine: Voo Store &bull; TSUTAYA Books &bull; doyouread.me? &bull; 032c
+        </p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
